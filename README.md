@@ -8,7 +8,7 @@ API for users is implemented.
 We still need paths for .
 
 
-GET, POST /pets
-GET, POST, DELETE, PUT /pet/{petID}
-GET, /shelters
-GET, POST, DELETE, PUT /shelter/shelterID
+* GET, POST /pets
+* GET, POST, DELETE, PUT /pet/{petID}
+* GET, /shelters
+* GET, POST, DELETE, PUT /shelter/shelterID
