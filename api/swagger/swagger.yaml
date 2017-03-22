@@ -1,0 +1,192 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: User DB
+# during dev, should point to your local machine
+host: localhost:8080
+# basePath prefixes all resource paths
+basePath: /
+#
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /users:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: users
+    get:
+      description: Returns index of users
+      # used as the method name of the controller
+      operationId: index
+      parameters:
+        - name: firstName
+          in: query
+          description: filters users by first Name
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/UserListBody"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+    post:
+      description: Creates a new user entry
+      operationId: create
+      parameters:
+        - name: user
+          in: body
+          required: true
+          description: a new user details
+          schema:
+            $ref: "#/definitions/UserBody"
+      responses:
+        "200":
+          description: a successful user stored
+          schema:
+            $ref: "#/definitions/UserBody"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /user/{userId}:
+    x-swagger-router-controller: users
+    get:
+      description: Returns a single movie entry
+      operationId: show
+      parameters:
+        - name: userId
+          required: true
+          in: path
+          type: string
+      responses:
+        "200":
+          description: a user details
+          schema:
+            $ref: "#/definitions/UserBody"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      description: Update a single user entry by Id
+      operationId: update
+      parameters:
+        - name: userId
+          required: true
+          in: path
+          type: string
+        - name: user
+          required: true
+          in: body
+          description: an updated User details
+          schema:
+            $ref: "#/definitions/UserBody"
+      responses:
+        "200":
+          description: successfully updating a user
+          schema:
+            $ref: "#/definitions/UserBody"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      description: Delete a user entry
+      operationId: destroy
+      parameters:
+        - name: userId
+          required: true
+          in: path
+          type: string
+      responses:
+        "200":
+          description: deleted a user details
+          schema:
+            $ref: "#/definitions/UserBody"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+
+#responding with a list of movies
+  UserListBody:
+    required:
+      - users
+    properties:
+      users:
+        type: array
+        items:
+          $ref: "#/definitions/User"
+
+#Post a Movie
+  UserBody:
+    properties:
+      user:
+        $ref: "#/definitions/User"
+
+#error response
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
+ #movie object
+  User:
+    required:
+      - userName
+      - passWord
+      - firstName
+      - lastName
+    properties:
+      userName:
+        type: string
+        minLength: 4
+      passWord:
+        type: string
+        minLength: 4
+      firstName:
+        type: string
+      lastName:
+        type: string
+      location:
+        type: string
+      age:
+        type: integer
+      phoneNumber:
+        type: string
+      lastLoginDate:
+        type: string
+        readOnly: true
+      email:
+        type: string
+      pet:
+        properties:
+          animal:
+            type: string
+          name:
+            type: string
+          age:
+            type: integer
+          info:
+            type: string
+          funds:
+            type: integer

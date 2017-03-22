@@ -1,2 +1,1 @@
-# gofundMeow
-A updated version of the project 
+# Skeleton project for Swagger

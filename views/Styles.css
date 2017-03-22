@@ -1,0 +1,221 @@
+/*** Main Css Styles ***/
+
+/********* Nav Bar ***************/
+
+
+.picture_container {
+    max-width: 100px;
+    height: 60px;
+    border-radius: 60px;
+    border: 2px solid ghostwhite;
+    -webkik-background-image: url(cat-vector-74-57861.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: auto auto 10px;
+
+}
+.picture_position{
+    position: absolute;
+    left: 33%;
+    top: 10px;
+    width: 100%;
+    height: 100px;
+    z-index:100;
+}
+
+.title{
+    position:absolute;
+    left: 41%;
+    top:0;
+    font-size: 600%; z-index: 1;
+    font-family:signPainter,cursive;
+    color: #4A4A4A;
+}
+.topNav {
+    position: absolute;
+    width: 101.1%;
+    height: 100px;
+    left: 0;
+}
+@media (max-width: 600px) and (min-width: 375px){
+    .picture_container{
+        max-width: 60px;
+        height: 60px;
+    }
+    .picture_position{
+        left: 7%;
+        top: 8%;
+    }
+    .topNav{
+        width: 120%;
+    }
+    .title{
+        left: 28%;
+        font-size: 400%;
+        top: -17px;
+    }
+    .welcomeHeader{
+        position: absolute;
+        left: 11%;
+        top: 20%;
+    }
+
+}
+/************************************************************/
+
+/*** index.html Body ***/
+.welcomeHeader{
+    font-family: 'Avenir Next',serif;
+    font-size: 500%;
+    font-weight: bold;
+    color: #4A4A4A;
+    z-index: -1;
+}
+.collage1{
+    background-image: url(Husky-Wallpapers.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:279px;
+    width: 435px;
+    position: absolute;
+    top: 30%;
+    left:0;
+    opacity: 0.48;
+}
+.collage2{
+
+    background-image: url(Screen_Shot_2016-10-04_at_11.16.03_AM_large.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:329px;
+    width: 435px;
+    position: absolute;
+    top: 64.8%;
+    left:0;
+    opacity: 1;
+}
+.collage3{
+
+    background-image: url(labrador-retriever-dog-pictures-8.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:608px;
+    width: 1008px;
+    position: absolute;
+    top: 30%;
+    left:30.2%;
+    opacity:0.6;
+}
+.textField{
+    font-family: SignPainter,cursive;
+    font-size: 72px;
+    position: absolute;
+    top: 30%;
+    opacity: 0.5;
+    color: #4A4A4A;
+    left: 31%;
+}
+br{
+   line-height: 20px;
+}
+@media (max-width: 600px) and (min-width: 375px){
+    .collage1{
+        height: 150px;
+        max-width: 150px;
+        top: 40%;
+        opacity: 0.9;
+        z-index: -1;
+    }
+    .collage2{
+        height:150px;
+        max-width: 150px;
+        top: 57%;
+        z-index: -1;
+    }
+    .collage3{
+        height: 285px;
+        width:350px;
+        left: 27%;
+        top: 40%;
+        z-index: -2;
+    }
+    .textField{
+        font-size: 32px;
+        top: 40%;
+        z-index: -1;
+        left: 40%;
+    }
+
+}
+/************************************************************/
+
+/*** Buttons ***/
+
+.btnClass{
+    position: absolute;
+    top: 120%;
+    left: 70%;
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    color: #4A4A4A;
+    font-size: 48px;
+    font-weight: bolder;
+    font-family: "Avenir Next", serif;
+    background-color: #C9D8E9;
+    border: 1px solid #3c3c3c;
+    margin-bottom: 50px;
+}
+.btnClass:hover{
+    background-color: #8390a1;
+}
+.btnClass2{
+    position: absolute;
+    top: 120%;
+    left: 40%;
+    width: 200px;
+    height: 100px;
+    border-radius: 10px;
+    color: #4A4A4A;
+    font-size: 48px;
+    font-weight: bolder;
+    font-family: "Avenir Next", serif;
+    background-color: #C9D8E9;
+    border: 1px solid #3c3c3c;
+    margin-bottom: 50px;
+}
+.btnClass2:hover{
+    background-color: #8390a1;
+}
+
+.box{
+    position: absolute;
+    margin-left: 50px;
+    top: 110%;
+    max-width: 350px;
+    font-size: 24px;
+    font-family: "Avenir Next", serif;
+    font-weight: bold;
+    color: #4A4A4A;
+}
+@media (max-width: 600px) and (min-width: 375px) {
+    .box{
+        top: 80%;
+        margin-left: 30px;
+    }
+    .btnClass{
+        width: 150px;
+        height: 70px;
+        top: 110%;
+        font-size: 24px;
+        left: 50%;
+    }
+    .btnClass2{
+        width: 150px;
+        height: 70px;
+        top: 110%;
+        font-size: 24px;
+        left: 10%;
+    }
+
+}
