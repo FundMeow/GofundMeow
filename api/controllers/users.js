@@ -37,12 +37,12 @@ function index(req,res){
 //create a new user
 function create(req,res){
 
-    var _user = new User(req.swagger.params.user.value.user);
+    var _user = new User(req.swagger.params.user.value);
     _user.save(function(err) {
-        // if (err){
-        //     res.status(500).json(err).end();
-        //     return;
-        // }
+        if (err){
+             res.status(500).json(err).end();
+             return;
+         }
         //Need to find why this gives a error, when using the POST method
 
         res.json({
