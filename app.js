@@ -16,15 +16,21 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
     // install middleware
     swaggerExpress.register(app);
     var port = process.env.PORT || 8080;
-    mongoose.connect('mongodb://localhost/movieHouse');
 
-    mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-    mongoose.connection.once('open', function() {
-        app.use(jsonErrorFormatter);
+    var options = { server: { socketOptions: { keepAlive: 1000, connectTimeoutMS: 30000 } },
+        replset: { socketOptions: { keepAlive: 1000, connectTimeoutMS : 30000 } } };
+
+    var mongodbUri = 'mongodb://fundmeow:hi10fund@ds151070.mlab.com:51070/fundmeowdb';
+
+    mongoose.connect(mongodbUri, options);
+    var conn = mongoose.connection;
+
+    conn.on('error', console.error.bind(console, 'connection error:'));
+    conn.once('open', function() {
         app.listen(port, function() {
             console.log('DB and App running on port 8080')
         })
-
-    })
+        // Wait for the database connection to establish, then start the app.
+    });
 
 });

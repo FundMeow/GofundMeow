@@ -4,6 +4,7 @@
 
 'use strict';
 
+var mongoose = require('mongoose');
 var User = require('../../models/user');
 var _ = require('lodash');
 
