@@ -38,6 +38,7 @@ function index(req,res){
 function create(req,res){
 
     var _user = new User(req.swagger.params.user.value);
+    _user.metadata.path = "/user/" + _user._id;
     _user.save(function(err) {
         if (err){
              res.status(500).json(err).end();

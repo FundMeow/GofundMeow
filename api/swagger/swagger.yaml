@@ -154,6 +154,10 @@ definitions:
       - firstName
       - lastName
     properties:
+      metadata:
+       properties:
+         path:
+           type: string
       userName:
         type: string
         minLength: 4
