@@ -120,7 +120,6 @@ paths:
           description: error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -154,6 +153,10 @@ definitions:
       - firstName
       - lastName
     properties:
+      metadata:
+       properties:
+         path:
+           type: string
       userName:
         type: string
         minLength: 4

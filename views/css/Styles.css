@@ -8,11 +8,9 @@
     height: 60px;
     border-radius: 60px;
     border: 2px solid ghostwhite;
-    -webkik-background-image: url(cat-vector-74-57861.jpg);
+    background-image: url(../content/CatVector.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    margin: auto auto 10px;
-
 }
 .picture_position{
     position: absolute;
@@ -72,7 +70,7 @@
     z-index: -1;
 }
 .collage1{
-    background-image: url(Husky-Wallpapers.jpg);
+    background-image: url(../content/Husky-Wallpapers.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height:279px;
@@ -84,7 +82,7 @@
 }
 .collage2{
 
-    background-image: url(Screen_Shot_2016-10-04_at_11.16.03_AM_large.png);
+    background-image: url(../content/Screen_Shot_2016-10-04_at_11.16.03_AM_large.png);
     background-size: cover;
     background-repeat: no-repeat;
     height:329px;
@@ -96,7 +94,7 @@
 }
 .collage3{
 
-    background-image: url(labrador-retriever-dog-pictures-8.jpg);
+    background-image: url(../content/labrador-retriever-dog-pictures-8.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     height:608px;
@@ -219,3 +217,9 @@ br{
     }
 
 }
+
+/***********
+ */
+
+
+
