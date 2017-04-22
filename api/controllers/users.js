@@ -4,7 +4,6 @@
 
 'use strict';
 
-var mongoose = require('mongoose');
 var User = require('../../models/user');
 var _ = require('lodash');
 
@@ -27,7 +26,6 @@ function index(req,res){
         if(err){
             res.status(500).json(err).end();
         }
-        console.log(users);
         res.json({
             users: users
         }).end();
@@ -43,7 +41,6 @@ function create(req,res){
              res.status(500).json(err).end();
              return;
          }
-        //Need to find why this gives a error, when using the POST method
 
         res.json({
             message: 'User Created',
@@ -72,7 +69,6 @@ function update(req,res){
             res.status(500).json(err).end();
             return;
         }
-
         _.assign(user, req.swagger.params.user.value.user);
 
         user.save(function(err){
@@ -100,4 +96,24 @@ function destroy(req,res){
             user: user
         }).end();
     })
+}
+
+function indexPets(req,res){
+
+    User.find(_.omitBy({
+        firstName: req.swagger.params.firstName.value
+    }, function (value) {
+        return _.isNull(value) || _.isUndefined(value);
+
+    }), function (err, users) {
+        if(err){
+            res.status(500).json(err).end();
+        }
+        console.log(users);
+        res.json({
+            users: users.pet
+        }).end();
+    });
+
+
 }
