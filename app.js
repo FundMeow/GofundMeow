@@ -43,4 +43,5 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
         });
         // Wait for the database connection to establish, then start the app.
     });
+
 });
