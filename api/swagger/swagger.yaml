@@ -120,23 +120,19 @@ paths:
           description: error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
-
-#responding with a list of movies
+#responding with a list of Users
   UserListBody:
-    required:
-      - users
     properties:
       users:
         type: array
         items:
           $ref: "#/definitions/User"
 
-#Post a Movie
+#Post a User
   UserBody:
     properties:
       user:
@@ -149,7 +145,7 @@ definitions:
     properties:
       message:
         type: string
- #movie object
+ #User object
   User:
     required:
       - userName
@@ -157,6 +153,10 @@ definitions:
       - firstName
       - lastName
     properties:
+      metadata:
+       properties:
+         path:
+           type: string
       userName:
         type: string
         minLength: 4

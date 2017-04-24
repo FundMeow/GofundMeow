@@ -28,6 +28,9 @@ module.exports = mongoose.model('User', new mongoose.Schema({
         default: Date.now
     },
     email: String,
-    pet: [Pet]
+    pet: [Pet],
+    metadata: {
+        path: String,
+    }
 }));
 

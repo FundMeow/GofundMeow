@@ -2,6 +2,7 @@
     background-color: #b8d1bc;
     border-color: #b8d1bc;
     border-bottom: solid black;
+    font-weight: bolder;
 }
 @media (min-width: 375px){
     .navbar-default{

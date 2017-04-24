@@ -1,34 +1,30 @@
 /*** Main Css Styles ***/
 
 /********* Nav Bar ***************/
-
+html {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
 
 .picture_container {
     max-width: 100px;
-    height: 60px;
     border-radius: 60px;
     border: 2px solid ghostwhite;
-    -webkik-background-image: url(cat-vector-74-57861.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: auto auto 10px;
-
 }
 .picture_position{
     position: absolute;
-    left: 33%;
+    left: 31%;
     top: 10px;
     width: 100%;
-    height: 100px;
+    height: 100%;
     z-index:100;
 }
 
 .title{
     position:absolute;
-    left: 41%;
+    left: 39%;
     top:0;
     font-size: 600%; z-index: 1;
-    font-family:signPainter,cursive;
+    font-family:signPainter, "Brush Script MT", cursive, sans-serif;
     color: #4A4A4A;
 }
 .topNav {
@@ -37,6 +33,36 @@
     height: 100px;
     left: 0;
 }
+
+/*Desktop Media Query*/
+@media (max-width: 1250px) and (min-width: 900px){
+
+    .title{
+    top: 10px;
+    font-size: 500%;
+    }
+    .picture_container{
+        top: 10px;
+        max-width: 100px;
+        height: 100px;
+    }
+}
+@media (max-width: 1000px) and (min-width: 600px){
+
+    .title{
+        top: -10px;
+        font-size: 400%;
+        left: 10%;
+    }
+    .picture_container{
+        top:6px;
+        max-width: 60px;
+        height: 60px;
+        left: 3%;
+    }
+
+}
+
 @media (max-width: 600px) and (min-width: 375px){
     .picture_container{
         max-width: 60px;
@@ -72,35 +98,27 @@
     z-index: -1;
 }
 .collage1{
-    background-image: url(Husky-Wallpapers.jpg);
+    background-image: url(../content/Husky-Wallpapers.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height:279px;
-    width: 435px;
+    height:252px;
+    width: 30.2%;
     position: absolute;
     top: 30%;
     left:0;
     opacity: 0.48;
 }
 .collage2{
-
-    background-image: url(Screen_Shot_2016-10-04_at_11.16.03_AM_large.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height:329px;
-    width: 435px;
+    height:331px;
+    width: 30.2%;
     position: absolute;
     top: 64.8%;
     left:0;
     opacity: 1;
 }
 .collage3{
-
-    background-image: url(labrador-retriever-dog-pictures-8.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height:608px;
-    width: 1008px;
+    height:583px;
+    width: 70%;
     position: absolute;
     top: 30%;
     left:30.2%;
@@ -118,24 +136,26 @@
 br{
    line-height: 20px;
 }
+
+
+
+
+/*Mobile Media Query*/
 @media (max-width: 600px) and (min-width: 375px){
     .collage1{
-        height: 150px;
-        max-width: 150px;
+        height: 130px;
         top: 40%;
-        opacity: 0.9;
         z-index: -1;
     }
     .collage2{
-        height:150px;
+        height:135px;
         max-width: 150px;
-        top: 57%;
+        top: 57.9%;
         z-index: -1;
     }
     .collage3{
-        height: 285px;
-        width:350px;
-        left: 27%;
+        height: 265px;
+        left: 30.1%;
         top: 40%;
         z-index: -2;
     }
@@ -143,7 +163,7 @@ br{
         font-size: 32px;
         top: 40%;
         z-index: -1;
-        left: 40%;
+        left: 32%;
     }
 
 }
@@ -190,8 +210,8 @@ br{
 
 .box{
     position: absolute;
-    margin-left: 50px;
-    top: 110%;
+    margin-left: 2%;
+    top: 115%;
     max-width: 350px;
     font-size: 24px;
     font-family: "Avenir Next", serif;
@@ -200,22 +220,79 @@ br{
 }
 @media (max-width: 600px) and (min-width: 375px) {
     .box{
-        top: 80%;
-        margin-left: 30px;
+        top: 82%;
+        margin-left: 35px;
     }
     .btnClass{
         width: 150px;
         height: 70px;
-        top: 110%;
+        top: 100%;
         font-size: 24px;
         left: 50%;
     }
     .btnClass2{
         width: 150px;
         height: 70px;
-        top: 110%;
+        top: 100%;
         font-size: 24px;
         left: 10%;
     }
 
 }
+@media (max-width: 900px) and (min-width: 600px){
+    .btnClass{
+        width: 150px;
+        height: 70px;
+        top: 120%;
+        font-size: 24px;
+        left: 70%;
+    }
+    .btnClass2{
+        width: 150px;
+        height: 70px;
+        top: 120%;
+        font-size: 24px;
+        left: 45%;
+    }
+
+}
+
+/***********
+
+Pets.Html
+ */
+
+.picture_container2 {
+    max-width: 60px;
+    height: 60px;
+    border-radius: 60px;
+    border: 2px solid ghostwhite;
+    background-image: url(../content/CatVector.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.picture_position2{
+    position: absolute;
+    left: 3%;
+    top: 6px;
+    width: 100%;
+    z-index:100;
+}
+.title2{
+    position:absolute;
+    left: 7%;
+    top:0;
+    font-size: 300%; z-index: 1;
+    font-family:signPainter,cursive;
+    color: #4A4A4A;
+}
+.petsTitle{
+    position:absolute;
+    left: 40%;
+    top:-10px;
+    font-size: 600%; z-index: 1;
+    font-family: "Avenir Next", sans-serif;
+    color: #4A4A4A;
+    font-weight: bold;
+}
+

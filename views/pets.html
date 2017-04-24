@@ -3,46 +3,42 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title></title>
+    <title>Pets</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-
-
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/Styles.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">-->
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-overide.css">
 
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">-->
-    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-overide.css">
 
-    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
 </head>
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
-
-
-<!-- Don't be frightened. This is just a template from bootstrap.com-->
 <header>
     <div class="container">
         <div class="row topNav" style="background-color: #b8d1bc">
-            <div class="picture_position picture_container"></div>
+            <div class="picture_position2 picture_container2"></div>
         </div>
     </div>
-    <h1 class="title">FundMeow</h1>
+    <h1 class="title2">FundMeow</h1>
+    <h1 class="petsTitle">Pets</h1>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -57,7 +53,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="login.html">Sign-up <span class="sr-only">(current)</span></a></li>
+                    <li><a href="signup.html">Sign-up <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Log-in</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -95,59 +91,18 @@
         </div><!-- /.container-fluid -->
     </nav>
 </header>
-<body>
-<!-- views/signin.handlebars -->
-<div class="jumbotron text-center">
-    <h1>Sign in</h1>
-    <p>We're using passport.js to demonstrate user authentication. Please sign-in with your Local, Twitter, Google, or Facebook account to view your profile.</p>
-    <p>
-        <a data-toggle="collapse" href="#local" class="btn btn-warning btn-lg" role="button"><span class="glyphicon glyphicon-user"></span> Sign in Locally</a>
-    </p>
-
-    <div id="local" class="collapse">
-        <a data-toggle="collapse" href="#local-sign-in" class="btn btn-default btn-md" role="button">I already have an account</a>
-        <a data-toggle="collapse" href="#local-reg" class="btn btn-default btn-md" role="button">I need to make an account</a>
+<body ng-app="fundMeow">
+<div class="container">
+    <div ng-controller="petCtrl">
+        <table class="table table-responsive">
+            <tr ng-repeat="pet in pets" style="font-family: ">
+                <td>{{pet[0].name}}</td>
+                <td>{{pet[0].animal}}</td>
+                <td>{{pet[0].age}}</td>
+            </tr>
+        </table>
     </div>
-
-    <form id="local-sign-in" class="collapse" action="/login" method="post">
-        <div>
-            <p></p>
-            <label>Username:</label>
-            <input type="text" name="username"/>
-        </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" name="password"/>
-        </div>
-        <div>
-            <input type="submit" class="btn btn-primary btn-sm" value="Log In"/>
-        </div>
-    </form>
-
-    <form id="local-reg" class="collapse" action="/local-reg" method="post">
-        <div>
-            <p></p>
-            <label>New Username:</label>
-            <input type="text" name="username"/>
-        </div>
-        <div>
-            <label>New Password:</label>
-            <input type="password" name="password"/>
-        </div>
-        <div>
-            <input type="submit" class="btn btn-primary btn-sm" value="Register"/>
-        </div>
-    </form>
 </div>
 
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-<script>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-        e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-        e.src='https://www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-    ga('create','UA-XXXXX-X','auto');ga('send','pageview');
-</script>
 </body>
 </html>
