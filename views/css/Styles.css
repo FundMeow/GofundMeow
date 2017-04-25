@@ -11,7 +11,7 @@ html {
     border: 2px solid ghostwhite;
 }
 .picture_position{
-    position: absolute;
+    position: relative;
     left: 38%;
     top: 6px;
     width: 100px;
@@ -83,6 +83,67 @@ html {
 /************************************************************/
 
 /*** ******* Body *********** ***/
+#photos {
+    /* Prevent vertical gaps */
+    line-height: 0;
+
+    -webkit-column-count: 5;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    5;
+    -moz-column-gap:      0px;
+    column-count:         5;
+    column-gap:           0px;
+}
+
+#photos img {
+    /* Just in case there are inline attributes */
+    width: 100%;
+    height: auto;
+    opacity: 0.6;
+    left: 0;
+}
+
+#photos img:hover{
+
+    opacity: 1;
+
+}
+@media (max-width: 1600px) {
+    #photos {
+        -moz-column-count:    5;
+        -webkit-column-count: 5;
+        column-count:         5;
+    }
+}
+@media (max-width: 1200px) {
+    #photos {
+        -moz-column-count:    4;
+        -webkit-column-count: 4;
+        column-count:         4;
+    }
+}
+@media (max-width: 1000px) {
+    #photos {
+        -moz-column-count:    3;
+        -webkit-column-count: 3;
+        column-count:         3;
+    }
+}
+@media (max-width: 800px) {
+    #photos {
+        -moz-column-count:    2;
+        -webkit-column-count: 2;
+        column-count:         2;
+    }
+}
+@media (max-width: 600px) {
+    #photos {
+        -moz-column-count:    1;
+        -webkit-column-count: 1;
+        column-count:         1;
+    }
+}
+
 .welcomeHeader{
     font-family: 'Palanquin Dark', sans-serif, serif;
     font-size: 500%;
@@ -90,41 +151,14 @@ html {
     color: #4A4A4A;
     z-index: -1;
 }
-.collage1{
-    background-image: url(../content/Husky-Wallpapers.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height:252px;
-    width: 30.2%;
-    position: absolute;
-    top: 30%;
-    left:0;
-    opacity: 0.48;
-}
-.collage2{
-    height:331px;
-    width: 30.2%;
-    position: absolute;
-    top: 61.6%;
-    left:0;
-    opacity: 1;
-}
-.collage3{
-    height:583px;
-    width: 70%;
-    position: absolute;
-    top: 30%;
-    left:30.2%;
-    opacity:0.6;
-}
 .textField{
     font-family: SignPainter, "Great Vibes", cursive;
     font-size: 64px;
-    position: absolute;
+    position: relative;
     top: 30%;
     opacity: 0.5;
     color: #4A4A4A;
-    left: 31%;
+    left: 74%;
 }
 br{
     display: block;
@@ -134,23 +168,6 @@ br{
 
 /*Mobile Media Query*/
 @media (max-width: 600px) and (min-width: 375px){
-    .collage1{
-        height: 130px;
-        top: 30%;
-        z-index: -1;
-    }
-    .collage2{
-        height:135px;
-        max-width: 150px;
-        top: 46.3%;
-        z-index: -1;
-    }
-    .collage3{
-        height: 265px;
-        left: 30.1%;
-        top: 30%;
-        z-index: -2;
-    }
     .textField{
         font-size: 32px;
         top: 30%;
@@ -160,7 +177,7 @@ br{
     .welcomeHeader{
         position: absolute;
         left: 11%;
-        top: 13%;
+        top: 7%;
     }
 
 }
@@ -169,8 +186,8 @@ br{
 /*** Buttons ***/
 
 .btnClass{
-    position: absolute;
-    top: 120%;
+    position: relative;
+    top: 100%;
     left: 70%;
     width: 200px;
     height: 100px;
@@ -187,9 +204,9 @@ br{
     background-color: #8390a1;
 }
 .btnClass2{
-    position: absolute;
-    top: 120%;
-    left: 40%;
+    position: relative;
+    top: 100%;
+    left: 30%;
     width: 200px;
     height: 100px;
     border-radius: 10px;
@@ -206,9 +223,9 @@ br{
 }
 
 .box{
-    position: absolute;
+    position: relative;
     margin-left: 2%;
-    top: 115%;
+    top: 100%;
     max-width: 350px;
     font-size: 24px;
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
@@ -225,7 +242,7 @@ br{
         height: 70px;
         top: 88%;
         font-size: 24px;
-        left: 50%;
+        left: 10%;
     }
     .btnClass2{
         width: 150px;
