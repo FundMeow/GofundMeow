@@ -11,7 +11,7 @@ html {
     border: 2px solid ghostwhite;
 }
 .picture_position{
-    position: absolute;
+    position: relative;
     left: 31%;
     top: 10px;
     width: 100%;
@@ -23,23 +23,38 @@ html {
     position:absolute;
     left: 39%;
     top:0;
-    font-size: 600%; z-index: 1;
-    font-family:signPainter, "Brush Script MT", cursive, sans-serif;
+    font-size: 500%;
+    z-index: 1;
+    font-family: "Great Vibes", cursive;
     color: #4A4A4A;
 }
 .topNav {
     position: absolute;
-    width: 101.1%;
+    width: 80%;
     height: 100px;
-    left: 0;
+    left: 0%;
 }
 
-/*Desktop Media Query*/
+/*Desktop Media Query
+FROM: https://css-tricks.com/seamless-responsive-photo-grid/
+*/
+@media (max-width: 1800px) and (min-width: 1250px){
+
+    .title{
+        top: 10px;
+        font-size: 500%;
+    }
+    .picture_container{
+        top: 10px;
+        max-width: 100px;
+        height: 100px;
+    }
+}
 @media (max-width: 1250px) and (min-width: 900px){
 
     .title{
     top: 10px;
-    font-size: 500%;
+    font-size: 400%;
     }
     .picture_container{
         top: 10px;
@@ -63,7 +78,7 @@ html {
 
 }
 
-@media (max-width: 600px) and (min-width: 375px){
+@media (max-width: 600px) and (min-width: 200px){
     .picture_container{
         max-width: 60px;
         height: 60px;
@@ -77,11 +92,11 @@ html {
     }
     .title{
         left: 28%;
-        font-size: 400%;
+        font-size: 300%;
         top: -17px;
     }
     .welcomeHeader{
-        position: absolute;
+        position: relative;
         left: 11%;
         top: 20%;
     }
@@ -91,19 +106,79 @@ html {
 
 /*** index.html Body ***/
 .welcomeHeader{
-    font-family: 'Avenir Next',serif;
+    font-family: 'Great Vibes',cursive;
     font-size: 500%;
     font-weight: bold;
     color: #4A4A4A;
     z-index: -1;
 }
+#photos {
+    /* Prevent vertical gaps */
+    line-height: 0;
+
+    -webkit-column-count: 5;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    5;
+    -moz-column-gap:      0px;
+    column-count:         5;
+    column-gap:           0px;
+}
+
+#photos img {
+    /* Just in case there are inline attributes */
+    width: 100% !important;
+    height: auto !important;
+    opacity: 0.6;
+}
+
+#photos img:hover{
+
+   opacity: 1;
+
+}
+@media (max-width: 1600px) {
+    #photos {
+        -moz-column-count:    5;
+        -webkit-column-count: 5;
+        column-count:         5;
+    }
+}
+@media (max-width: 1200px) {
+    #photos {
+        -moz-column-count:    4;
+        -webkit-column-count: 4;
+        column-count:         4;
+    }
+}
+@media (max-width: 1000px) {
+    #photos {
+        -moz-column-count:    3;
+        -webkit-column-count: 3;
+        column-count:         3;
+    }
+}
+@media (max-width: 800px) {
+    #photos {
+        -moz-column-count:    2;
+        -webkit-column-count: 2;
+        column-count:         2;
+    }
+}
+@media (max-width: 600px) {
+    #photos {
+        -moz-column-count:    1;
+        -webkit-column-count: 1;
+        column-count:         1;
+    }
+}
+/*
 .collage1{
     background-image: url(../content/Husky-Wallpapers.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height:252px;
-    width: 30.2%;
-    position: absolute;
+    height:auto;
+    width: 100%;
+    position: relative;
     top: 30%;
     left:0;
     opacity: 0.48;
@@ -111,7 +186,7 @@ html {
 .collage2{
     height:331px;
     width: 30.2%;
-    position: absolute;
+    position: relative;
     top: 64.8%;
     left:0;
     opacity: 1;
@@ -119,15 +194,16 @@ html {
 .collage3{
     height:583px;
     width: 70%;
-    position: absolute;
+    position: relative;
     top: 30%;
     left:30.2%;
     opacity:0.6;
 }
+*/
 .textField{
-    font-family: SignPainter,cursive;
+    font-family: Signpainter, 'Great Vibes',cursive;
     font-size: 72px;
-    position: absolute;
+    position: relative;
     top: 30%;
     opacity: 0.5;
     color: #4A4A4A;
@@ -137,10 +213,8 @@ br{
    line-height: 20px;
 }
 
-
-
-
 /*Mobile Media Query*/
+/*
 @media (max-width: 600px) and (min-width: 375px){
     .collage1{
         height: 130px;
@@ -167,12 +241,13 @@ br{
     }
 
 }
+*/
 /************************************************************/
 
 /*** Buttons ***/
 
 .btnClass{
-    position: absolute;
+    position: relative;
     top: 120%;
     left: 70%;
     width: 200px;
@@ -183,16 +258,17 @@ br{
     font-weight: bolder;
     font-family: "Avenir Next", serif;
     background-color: #C9D8E9;
-    border: 1px solid #3c3c3c;
+    border: 4px solid #7e96bc;
     margin-bottom: 50px;
 }
 .btnClass:hover{
     background-color: #8390a1;
+    border: 4px solid #C9D8E9;
 }
 .btnClass2{
-    position: absolute;
+    position: relative;
     top: 120%;
-    left: 40%;
+    left: 10%;
     width: 200px;
     height: 100px;
     border-radius: 10px;
@@ -201,15 +277,16 @@ br{
     font-weight: bolder;
     font-family: "Avenir Next", serif;
     background-color: #C9D8E9;
-    border: 1px solid #3c3c3c;
+    border: 4px solid #7e96bc;
     margin-bottom: 50px;
 }
 .btnClass2:hover{
     background-color: #8390a1;
+    border: 4px solid #C9D8E9;
 }
 
 .box{
-    position: absolute;
+    position: relative;
     margin-left: 2%;
     top: 115%;
     max-width: 350px;
@@ -218,24 +295,27 @@ br{
     font-weight: bold;
     color: #4A4A4A;
 }
-@media (max-width: 600px) and (min-width: 375px) {
+@media (max-width: 600px) and (min-width: 150px) {
     .box{
         top: 82%;
         margin-left: 35px;
     }
+    .welcomeHeader{
+        font-size: 400%;
+    }
     .btnClass{
+        left: 0%;
         width: 150px;
         height: 70px;
         top: 100%;
         font-size: 24px;
-        left: 50%;
     }
     .btnClass2{
+        left: 60%;
         width: 150px;
         height: 70px;
         top: 100%;
         font-size: 24px;
-        left: 10%;
     }
 
 }
@@ -245,14 +325,14 @@ br{
         height: 70px;
         top: 120%;
         font-size: 24px;
-        left: 70%;
+        left: 10%;
     }
     .btnClass2{
         width: 150px;
         height: 70px;
         top: 120%;
         font-size: 24px;
-        left: 45%;
+        left: 50%;
     }
 
 }
@@ -287,7 +367,7 @@ Pets.Html
     color: #4A4A4A;
 }
 .petsTitle{
-    position:absolute;
+    position:relative;
     left: 40%;
     top:-10px;
     font-size: 600%; z-index: 1;
