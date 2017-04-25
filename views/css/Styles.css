@@ -5,32 +5,31 @@ html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-.picture_container {
+.picture_container{
     max-width: 100px;
     border-radius: 60px;
     border: 2px solid ghostwhite;
 }
 .picture_position{
     position: absolute;
-    left: 31%;
-    top: 10px;
-    width: 100%;
-    height: 100%;
+    left: 38%;
+    top: 6px;
+    width: 100px;
+    height: 100px;
     z-index:100;
 }
-
 .title{
     position:absolute;
-    left: 39%;
+    left: 38%;
     top:0;
-    font-size: 600%; z-index: 1;
-    font-family:signPainter, "Brush Script MT", cursive, sans-serif;
+    font-size: 575%; z-index: 1;
+    font-family: SignPainter, "Great Vibes", cursive;
     color: #4A4A4A;
 }
 .topNav {
     position: absolute;
-    width: 101.1%;
-    height: 100px;
+    height: 80px;
+    width: 80%;
     left: 0;
 }
 
@@ -46,6 +45,7 @@ html {
         max-width: 100px;
         height: 100px;
     }
+
 }
 @media (max-width: 1000px) and (min-width: 600px){
 
@@ -60,7 +60,6 @@ html {
         height: 60px;
         left: 3%;
     }
-
 }
 
 @media (max-width: 600px) and (min-width: 375px){
@@ -69,29 +68,23 @@ html {
         height: 60px;
     }
     .picture_position{
-        left: 7%;
+        left: 10%;
         top: 8%;
-    }
-    .topNav{
-        width: 120%;
     }
     .title{
         left: 28%;
         font-size: 400%;
-        top: -17px;
+        top: -5px;
     }
-    .welcomeHeader{
-        position: absolute;
-        left: 11%;
-        top: 20%;
+    .topNav{
+        width: 104.2%;
     }
-
 }
 /************************************************************/
 
-/*** index.html Body ***/
+/*** ******* Body *********** ***/
 .welcomeHeader{
-    font-family: 'Avenir Next',serif;
+    font-family: 'Palanquin Dark', sans-serif, serif;
     font-size: 500%;
     font-weight: bold;
     color: #4A4A4A;
@@ -112,7 +105,7 @@ html {
     height:331px;
     width: 30.2%;
     position: absolute;
-    top: 64.8%;
+    top: 61.6%;
     left:0;
     opacity: 1;
 }
@@ -125,8 +118,8 @@ html {
     opacity:0.6;
 }
 .textField{
-    font-family: SignPainter,cursive;
-    font-size: 72px;
+    font-family: SignPainter, "Great Vibes", cursive;
+    font-size: 64px;
     position: absolute;
     top: 30%;
     opacity: 0.5;
@@ -134,36 +127,40 @@ html {
     left: 31%;
 }
 br{
-   line-height: 20px;
+    display: block;
+    margin: 10px 0;
 }
-
-
 
 
 /*Mobile Media Query*/
 @media (max-width: 600px) and (min-width: 375px){
     .collage1{
         height: 130px;
-        top: 40%;
+        top: 30%;
         z-index: -1;
     }
     .collage2{
         height:135px;
         max-width: 150px;
-        top: 57.9%;
+        top: 46.3%;
         z-index: -1;
     }
     .collage3{
         height: 265px;
         left: 30.1%;
-        top: 40%;
+        top: 30%;
         z-index: -2;
     }
     .textField{
         font-size: 32px;
-        top: 40%;
+        top: 30%;
         z-index: -1;
         left: 32%;
+    }
+    .welcomeHeader{
+        position: absolute;
+        left: 11%;
+        top: 13%;
     }
 
 }
@@ -181,7 +178,7 @@ br{
     color: #4A4A4A;
     font-size: 48px;
     font-weight: bolder;
-    font-family: "Avenir Next", serif;
+    font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
     border: 1px solid #3c3c3c;
     margin-bottom: 50px;
@@ -199,7 +196,7 @@ br{
     color: #4A4A4A;
     font-size: 48px;
     font-weight: bolder;
-    font-family: "Avenir Next", serif;
+    font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
     border: 1px solid #3c3c3c;
     margin-bottom: 50px;
@@ -214,26 +211,26 @@ br{
     top: 115%;
     max-width: 350px;
     font-size: 24px;
-    font-family: "Avenir Next", serif;
+    font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     font-weight: bold;
     color: #4A4A4A;
 }
 @media (max-width: 600px) and (min-width: 375px) {
     .box{
-        top: 82%;
+        top: 72%;
         margin-left: 35px;
     }
     .btnClass{
         width: 150px;
         height: 70px;
-        top: 100%;
+        top: 88%;
         font-size: 24px;
         left: 50%;
     }
     .btnClass2{
         width: 150px;
         height: 70px;
-        top: 100%;
+        top: 88%;
         font-size: 24px;
         left: 10%;
     }
@@ -261,38 +258,4 @@ br{
 
 Pets.Html
  */
-
-.picture_container2 {
-    max-width: 60px;
-    height: 60px;
-    border-radius: 60px;
-    border: 2px solid ghostwhite;
-    background-image: url(../content/CatVector.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.picture_position2{
-    position: absolute;
-    left: 3%;
-    top: 6px;
-    width: 100%;
-    z-index:100;
-}
-.title2{
-    position:absolute;
-    left: 7%;
-    top:0;
-    font-size: 300%; z-index: 1;
-    font-family:signPainter,cursive;
-    color: #4A4A4A;
-}
-.petsTitle{
-    position:absolute;
-    left: 40%;
-    top:-10px;
-    font-size: 600%; z-index: 1;
-    font-family: "Avenir Next", sans-serif;
-    color: #4A4A4A;
-    font-weight: bold;
-}
 

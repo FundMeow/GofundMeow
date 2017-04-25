@@ -10,7 +10,12 @@
     <!-- Place favicon.ico in the root directory -->
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/Styles.css">
+    <link rel="stylesheet" type="text/css" href="css/pet.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/Styles.css">-->
+    <link href="https://fonts.googleapis.com/css?family=Vollkorn:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <!-- <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">-->
     <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-overide.css">
@@ -20,7 +25,6 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-
 
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -33,11 +37,11 @@
 </head>
 <header>
     <div class="container">
-        <div class="row topNav" style="background-color: #b8d1bc">
-            <div class="picture_position2 picture_container2"></div>
+        <div class="row topNav2" style="background-color: #b8d1bc">
+            <img src="content/CatVector.jpg" class="img-fluid picture_container2 picture_position2" alt="Responsive image">
         </div>
     </div>
-    <h1 class="title2">FundMeow</h1>
+    <a href="index.html"><h1 class="title2">FundMeow</h1></a>
     <h1 class="petsTitle">Pets</h1>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -94,11 +98,20 @@
 <body ng-app="fundMeow">
 <div class="container">
     <div ng-controller="petCtrl">
-        <table class="table table-responsive">
-            <tr ng-repeat="pet in pets" style="font-family: ">
-                <td>{{pet[0].name}}</td>
-                <td>{{pet[0].animal}}</td>
-                <td>{{pet[0].age}}</td>
+        <table class="table table-responsive" ng-repeat="pet in pets">
+            <tr>
+                <td class="text-left"> <img src="content/CatVector.jpg" class="img-fluid image_container image_position" alt="Responsive image"></td>
+                <td class=""><span class="petName">{{pet[0].name}} </span><br><br><span class="petInfo">
+                    {{pet[0].info}}
+                </span></td>
+
+                <td class="text-right"><a href="#"><button type="button" class="btnClass3">Donate</button></a>
+                <!--<td>{{pet[0].animal}}</td>-->
+                <!--<td>{{pet[0].age}}</td>-->
+            </tr>
+            <tr>
+                <!--<td class="text-right"><a href="#"><button type="button" class="btnClass3">Donate</button></a>-->
+                <!--</td>-->
             </tr>
         </table>
     </div>

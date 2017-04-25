@@ -1,0 +1,132 @@
+
+.topNav2 {
+    position: absolute;
+    height: 80px;
+    width: 80%;
+    left: 0;
+}
+
+.picture_container2{
+    max-width: 100px;
+    border-radius: 60px;
+    border: 2px solid ghostwhite;
+}
+.picture_position2{
+    position: absolute;
+    left: 4%;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+    z-index:100;
+}
+
+.title2{
+    position:absolute;
+    left: 7%;
+    top:0;
+    font-size: 300%; z-index: 1;
+    font-family:signPainter, "Great Vibes", cursive;
+    color: #4A4A4A;
+}
+.petsTitle{
+    position:absolute;
+    left: 38%;
+    top:0;
+    font-size: 600%; z-index: 1;
+    font-family: "Avenir Next",'Vollkorn','Palanquin Dark',sans-serif,serif;
+    color: #4A4A4A;
+    font-weight: bold;
+}
+
+.petName{
+    font-size: 400%;
+    font-family: 'Vollkorn',"Avenir Next",'Palanquin Dark',serif;
+    font-style: italic;
+    margin-top: 50px;
+}
+.petInfo{
+    max-width: 200px;
+}
+/*** Buttons ***/
+.btnClass3{
+    width: 150px;
+    height: 60px;
+    border-radius: 10px;
+    color: #4A4A4A;
+    font-size: 36px;
+
+    font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
+    background-color: #C9D8E9;
+    border: 1px solid #3c3c3c;
+    margin-top: 100px;
+}
+.btnClass3:hover{
+    background-color: #8390a1;
+}
+.image_container{
+    max-width: 300px;
+    border-radius: 100px;
+    border: 2px solid ghostwhite;
+    margin-top: 50px;
+}
+.image_position{
+    left: 4%;
+    width: 200px;
+    height: 200px;
+    z-index:100;
+}
+@media (max-width: 1000px) and (min-width: 600px){
+
+    .petsTitle{
+        font-size: 500%;
+        left: 35%;
+    }
+    .title2{
+        visibility: hidden;
+    }
+}
+@media (max-width: 800px) and (min-width: 600px){
+
+    .petsTitle{
+        top: -13px;
+        font-size: 500%;
+        left: 13%;
+    }
+    .title2{
+        visibility: hidden;
+    }
+}
+@media (max-width: 600px) and (min-width: 375px){
+
+    .petsTitle{
+        top: -10px;
+        font-size: 400%;
+        left: 38%;
+    }
+    .picture_container2{
+        max-width: 60px;
+        height: 60px;
+    }
+    .picture_position2{
+        left: 20%;
+    }
+    .title2{
+        visibility: hidden;
+    }
+    .topNav2{
+        width: 104.2%;
+    }
+    .image_position{
+        width: 100px;
+        height: 100px;
+    }
+    .petName{
+        font-size: 250%;
+    }
+    .btnClass3{
+        margin-top: 70px;
+        width:75px;
+        height: 30px;
+        font-size: 18px;
+    }
+}
