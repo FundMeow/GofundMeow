@@ -62,7 +62,7 @@ html {
     }
 }
 
-@media (max-width: 600px) and (min-width: 375px){
+@media (max-width: 600px) and (min-width: 0px){
     .picture_container{
         max-width: 60px;
         height: 60px;
@@ -72,7 +72,7 @@ html {
         top: 8%;
     }
     .title{
-        left: 28%;
+        left: 20%;
         font-size: 400%;
         top: -5px;
     }
@@ -97,6 +97,7 @@ html {
 
 #photos img {
     /* Just in case there are inline attributes */
+    position: relative;
     width: 100%;
     height: auto;
     opacity: 0.6;
@@ -138,13 +139,15 @@ html {
 }
 @media (max-width: 600px) {
     #photos {
-        -moz-column-count:    1;
-        -webkit-column-count: 1;
-        column-count:         1;
+        top: 20%;
+        -moz-column-count:    2;
+        -webkit-column-count: 2;
+        column-count:         2;
     }
 }
 
 .welcomeHeader{
+    position: relative;
     font-family: 'Palanquin Dark', sans-serif, serif;
     font-size: 500%;
     font-weight: bold;
@@ -167,7 +170,7 @@ br{
 
 
 /*Mobile Media Query*/
-@media (max-width: 600px) and (min-width: 375px){
+@media (max-width: 600px) and (min-width: 0px){
     .textField{
         font-size: 32px;
         top: 30%;
@@ -175,7 +178,7 @@ br{
         left: 32%;
     }
     .welcomeHeader{
-        position: absolute;
+        position: relative;
         left: 11%;
         top: 7%;
     }
@@ -197,16 +200,17 @@ br{
     font-weight: bolder;
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
-    border: 1px solid #3c3c3c;
+    border: 3px solid #8390a1;
     margin-bottom: 50px;
 }
 .btnClass:hover{
     background-color: #8390a1;
+    border: 3px solid #C9D8E9;
 }
 .btnClass2{
     position: relative;
     top: 100%;
-    left: 30%;
+    left: 10%;
     width: 200px;
     height: 100px;
     border-radius: 10px;
@@ -215,16 +219,17 @@ br{
     font-weight: bolder;
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
-    border: 1px solid #3c3c3c;
+    border: 3px solid #8390a1;
     margin-bottom: 50px;
 }
 .btnClass2:hover{
     background-color: #8390a1;
+    border: 3px solid #C9D8E9;
 }
 
 .box{
     position: relative;
-    margin-left: 2%;
+    margin-left: 12%;
     top: 100%;
     max-width: 350px;
     font-size: 24px;
@@ -232,20 +237,20 @@ br{
     font-weight: bold;
     color: #4A4A4A;
 }
-@media (max-width: 600px) and (min-width: 375px) {
+@media (max-width: 600px) and (min-width: 0px) {
     .box{
         top: 72%;
         margin-left: 35px;
     }
     .btnClass{
-        width: 150px;
+        width: 100px;
         height: 70px;
         top: 88%;
         font-size: 24px;
         left: 10%;
     }
     .btnClass2{
-        width: 150px;
+        width: 120px;
         height: 70px;
         top: 88%;
         font-size: 24px;
@@ -259,14 +264,14 @@ br{
         height: 70px;
         top: 120%;
         font-size: 24px;
-        left: 70%;
+        left: 50%;
     }
     .btnClass2{
         width: 150px;
         height: 70px;
         top: 120%;
         font-size: 24px;
-        left: 45%;
+        left: 50%;
     }
 
 }
