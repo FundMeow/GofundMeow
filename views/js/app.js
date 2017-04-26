@@ -4,7 +4,6 @@
 
 'use strict';
 
-
 var app = angular.module('fundMeow',[]);
 
 app.controller('petCtrl', ['$scope', '$http', function($scope, $http) {
@@ -15,5 +14,8 @@ app.controller('petCtrl', ['$scope', '$http', function($scope, $http) {
             $scope.pets.push($scope.users.data.users[i].pet);
         }
         console.log($scope.pets);
+
+
     })
 }]);
+

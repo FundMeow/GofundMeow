@@ -30,7 +30,7 @@ module.exports = mongoose.model('User', new mongoose.Schema({
     email: String,
     pet: [Pet],
     metadata: {
-        path: String,
+        path: String
     }
 }));
 

@@ -5,6 +5,9 @@ var express = require('express');
 var path = require('path');
 var app = require('express')();
 var mongoose = require('mongoose');
+// var multer = require('multer');
+// var upload = multer({dest: './uploads/'});
+
 var jsonErrorFormatter = require('./api/helpers/jsonErrorFormatter');
 module.exports = app; // for testing
 var config = {
@@ -13,11 +16,11 @@ var config = {
 
 SwaggerExpress.create(config, function(err, swaggerExpress) {
     if (err) { throw err; }
-
     // install middleware
     swaggerExpress.register(app);
     var port = process.env.PORT || 8080;
 
+   // app.use(upload.single('file'));
     var options = { server: { socketOptions: { keepAlive: 1000, connectTimeoutMS: 30000 } },
         replset: { socketOptions: { keepAlive: 1000, connectTimeoutMS : 30000 } } };
 
@@ -34,7 +37,6 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
     app.get('*', function(req, res) {
         res.sendFile('views/pets.html' , { root : __dirname});
     });
-
 
     conn.on('error', console.error.bind(console, 'connection error:'));
     conn.once('open', function() {

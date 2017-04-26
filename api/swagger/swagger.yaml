@@ -40,7 +40,6 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
     post:
       description: Creates a new user entry
       operationId: create
@@ -74,6 +73,30 @@ paths:
       responses:
         "200":
           description: a user details
+          schema:
+            $ref: "#/definitions/UserBody"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      description: Posts a image to a user
+      operationId: postImage
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: file
+          in: formData
+          description: the file to upload
+          required: false
+          type: file
+        - name: userId
+          in: path
+          type: string
+          required: true
+      responses:
+        "200":
+          description: successfully uploaded a image
           schema:
             $ref: "#/definitions/UserBody"
         default:
@@ -120,6 +143,29 @@ paths:
           description: error
           schema:
             $ref: "#/definitions/ErrorResponse"
+
+  /user/{userId}/petpicture:
+    x-swagger-router-controller: users
+    get:
+      description: Posts a image to a user
+      operationId: getImage
+      consumes:
+          - multipart/form-data
+      parameters:
+        - name: userId
+          in: path
+          description: the id of a user
+          required: true
+          type: string
+      responses:
+        "200":
+          description: successfully uploaded a image
+          schema:
+            $ref: "#/definitions/UserBody"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -137,7 +183,6 @@ definitions:
     properties:
       user:
         $ref: "#/definitions/User"
-
 #error response
   ErrorResponse:
     required:

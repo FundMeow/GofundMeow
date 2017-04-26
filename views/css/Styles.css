@@ -149,17 +149,17 @@ html {
     font-size: 500%;
     font-weight: bold;
     color: #4A4A4A;
-    z-index: -1;
+    z-index: 1;
 }
-.textField{
-    font-family: SignPainter, "Great Vibes", cursive;
-    font-size: 64px;
-    position: relative;
-    top: 30%;
-    opacity: 0.5;
-    color: #4A4A4A;
-    left: 74%;
-}
+/*.textField{*/
+    /*font-family: SignPainter, "Great Vibes", cursive;*/
+    /*font-size: 64px;*/
+    /*position: relative;*/
+    /*top: 30%;*/
+    /*opacity: 0.5;*/
+    /*color: #4A4A4A;*/
+    /*left: 74%;*/
+/*}*/
 br{
     display: block;
     margin: 10px 0;
