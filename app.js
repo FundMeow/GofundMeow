@@ -14,6 +14,48 @@ var config = {
     appRoot: __dirname // required config
 };
 
+//npm install braintree
+var braintree = require('braintree');
+
+var gateway = braintree.connect({
+    environment:  braintree.Environment.Sandbox,
+    merchantId:   '86smvm5pk58rw9wf',
+    publicKey:    'fmz87pkcpg9xhyv4',
+    privateKey:   'd8b03cee1ba2e26a25ccc97d8a95a28c'
+});
+
+
+app.get("/client_token", function (req, res) {
+    gateway.clientToken.generate({}, function (err, response) {
+        res.send(response.clientToken);
+    });
+});
+
+app.post("/checkout", function (req, res) {
+    var nonceFromTheClient = req.body.payment_method_nonce;
+    // Use payment method nonce here
+});
+
+gateway.transaction.sale({
+    amount: '10.00',
+    paymentMethodNonce: 'nonce-from-the-client',
+    options: {
+        submitForSettlement: true
+    }
+}, function (err, result) {
+    if (err) {
+        console.error(err);
+        return;
+    }
+
+    if (result.success) {
+        console.log('Transaction ID: ' + result.transaction.id);
+    } else {
+        console.error(result.message);
+    }
+});
+
+
 SwaggerExpress.create(config, function(err, swaggerExpress) {
     if (err) { throw err; }
     // install middleware
