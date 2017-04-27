@@ -10,7 +10,6 @@ var Pet = new mongoose.Schema({
     info: String,
     funds: Number
 });
-
 module.exports = mongoose.model('User', new mongoose.Schema({
     userName: String,
     passWord: {
@@ -30,7 +29,8 @@ module.exports = mongoose.model('User', new mongoose.Schema({
     email: String,
     pet: [Pet],
     metadata: {
-        path: String,
-    }
+        path: String
+    },
+    img: Buffer
 }));
 
