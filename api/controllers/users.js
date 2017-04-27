@@ -5,7 +5,6 @@
 'use strict';
 
 var User = require('../../models/user');
-var image = require('../../models/img');
 var _ = require('lodash');
 var multer = require('multer');
 var upload = multer({dest: './uploads/'});
@@ -22,8 +21,7 @@ module.exports = {
     show: show,
     update: update,
     destroy: destroy,
-    postImage: postImage,
-    getImage: getImage
+    postImage: postImage
 };
 
 //get all users in the database
