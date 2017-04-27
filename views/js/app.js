@@ -17,7 +17,7 @@ app.controller('petCtrl', ['$scope', '$http', function($scope, $http) {
     })
 }]);
 app.controller('userCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get('/users/{userId}').then(function(data){
+    $http.get('/users').then(function(data){
         $scope.user = data;
         $scope.pet = [];
         for(var i = 0; i < $scope.user.data.pet.length; i++){
