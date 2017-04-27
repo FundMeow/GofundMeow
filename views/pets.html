@@ -101,12 +101,16 @@
         <table class="table table-responsive" ng-repeat="pet in pets">
             <tr>
                 <td class="text-left"> <img src="content/CatVector.jpg" class="img-fluid image_container image_position" alt="Responsive image"></td>
-                <td class=""><span class="petName">{{pet[0].name}} </span><br><br><span class="petInfo">
+                    <td class=""><span class="petName">{{pet[0].name}}</span>
+                    <br>
+                    <br>
+                    <span class="petInfo">
                     {{pet[0].info}}
-                </span></td>
+                    </span>
+                    </td>
                 <td class="text-right">
                     <a href="#">
-                        <button type="button" class="btnClass3" ng-click="profile(pet[0]._id)">Donate</button>
+                        <button type="button" class="btnClass3" ng-click="profile(pet._id);">Donate</button>
                     </a>
                 </td>
             </tr>
