@@ -18,6 +18,28 @@ consumes:
 produces:
   - application/json
 paths:
+  /payment:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: payment
+    post:
+      description: makes a payment
+      operationId: postPayment
+      parameters:
+        - name: amount
+          in: body
+          required: true
+          description: made a payment
+          schema:
+            $ref: "#/definitions/payment"
+      responses:
+        "200":
+          description: a successful payment
+          schema:
+            $ref: "#/definitions/payment"
+        default:
+          description: error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /users:
     # binds a127 app logic to a route
     x-swagger-router-controller: users
@@ -189,6 +211,21 @@ definitions:
       - message
     properties:
       message:
+        type: string
+ #payment
+  payment:
+    properties:
+      user:
+        $ref: "#/definitions/Card"
+#Card Object
+  Card:
+    required:
+      - amount
+      - paymentMethodNonce
+    properties:
+      amount:
+        type: integer
+      paymentMethodNonce:
         type: string
  #User object
   User:
