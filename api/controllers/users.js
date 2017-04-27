@@ -166,12 +166,3 @@ function postImage(req,res){
         });
     });
 }
-function getImage(req,res){
-    User.findById(req.swagger.params.userId.value, function(err, user) {
-        if(err){
-            res.json({err:err});
-        }
-        else
-            res.json({photo: user.pet.photo})
-    })
-}
