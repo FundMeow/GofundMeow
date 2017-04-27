@@ -1,0 +1,4 @@
+
+# ignoring node modues with commits.
+
+/node_modules/
