@@ -235,3 +235,7 @@ definitions:
             type: string
           funds:
             type: integer
+          img:
+            properties:
+              data:
+                type: integer

@@ -5,8 +5,6 @@ var express = require('express');
 var path = require('path');
 var app = require('express')();
 var mongoose = require('mongoose');
-// var multer = require('multer');
-// var upload = multer({dest: './uploads/'});
 
 var jsonErrorFormatter = require('./api/helpers/jsonErrorFormatter');
 module.exports = app; // for testing
@@ -20,7 +18,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
     swaggerExpress.register(app);
     var port = process.env.PORT || 8080;
 
-   // app.use(upload.single('file'));
+
     var options = { server: { socketOptions: { keepAlive: 1000, connectTimeoutMS: 30000 } },
         replset: { socketOptions: { keepAlive: 1000, connectTimeoutMS : 30000 } } };
 
@@ -29,7 +27,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
     mongoose.connect(mongodbUri, options);
     var conn = mongoose.connection;
 
-    //Paths
+    //Rendering paths for views.
     app.use(express.static(path.join(__dirname, 'views')));
     app.get('*', function(req, res) {
         res.sendFile('views/index.html' , { root : __dirname});
@@ -38,12 +36,12 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
         res.sendFile('views/pets.html' , { root : __dirname});
     });
 
+    // Wait for the database connection to establish, then start the app.
     conn.on('error', console.error.bind(console, 'connection error:'));
     conn.once('open', function() {
         app.listen(port, function() {
             console.log('DB and App running on port 8080')
         });
-        // Wait for the database connection to establish, then start the app.
     });
 
 });

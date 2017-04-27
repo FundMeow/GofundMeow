@@ -5,7 +5,7 @@
 'use strict';
 
 var User = require('../../models/user');
-var imgage = require('../../models/img');
+var image = require('../../models/img');
 var _ = require('lodash');
 var multer = require('multer');
 var upload = multer({dest: './uploads/'});
@@ -15,10 +15,6 @@ var grid = require("gridfs-stream");
 var random = require("random-js")();
 var mongoose = require("mongoose");
 var conn = mongoose.connection;
-
-
-
-var connection = [];
 
 module.exports = {
     index: index,
@@ -52,6 +48,8 @@ function create(req,res){
 
     var _user = new User(req.swagger.params.user.value);
     _user.metadata.path = "/user/" + _user._id;
+    _user.img = '';
+    //res.json(_user);
     _user.save(function(err) {
         if (err){
              res.status(500).json(err).end();
@@ -59,15 +57,14 @@ function create(req,res){
          }
         res.json({
             message: 'User Created',
-            user: _user
+            created: _user
         })
-    })
+   })
 }
 
 //get a single user
 function show(req,res){
     User.findById(req.swagger.params.userId.value, function(err, user){
-
 
         if(err){
             res.status(500).json(err).end();
@@ -154,17 +151,8 @@ function postImage(req,res){
                     res.json({err: err});
                 }
                 else
-                    //creating a image schema.
-                    var image = new imgage();
-                    image.photo.data = img;
-                    console.log(image.photo.data);
-                    image.save();
-
-                    //assign the image to the pet
-                    _.assign(user.pet, {photo: Buffer});
-                    user.pet.photo = img;
-                    console.log(user.pet.photo);
-
+                    user.img = img;
+                    console.log(user);
                     user.save(function(err){
                         if(err){
                         res.status(500).json(err).end();

@@ -14,8 +14,21 @@ app.controller('petCtrl', ['$scope', '$http', function($scope, $http) {
             $scope.pets.push($scope.users.data.users[i].pet);
         }
         console.log($scope.pets);
-
-
     })
 }]);
+app.controller('imageCtrl', ['$scope', '$http', function($scope, $http) {
+    $scope.savePhoto = function () {
+        var fd = new FormData();
+        fd.append("file", $scope.files[0]);
+
+    $http.post("", fd, {
+        withCredentials: true,
+        headers: { 'Content-Type': undefined },
+        transformRequest: angular.identity
+    }).success(function (data) {
+        $scope.image = data; // If you want to render the image after successfully uploading in your db
+    });
+};
+}]);
+
 
