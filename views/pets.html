@@ -104,7 +104,11 @@
                 <td class=""><span class="petName">{{pet[0].name}} </span><br><br><span class="petInfo">
                     {{pet[0].info}}
                 </span></td>
-                <td class="text-right"><a href="#"><button type="button" class="btnClass3">Donate</button></a>
+                <td class="text-right">
+                    <a href="#">
+                        <button type="button" class="btnClass3" ng-click="profile(pet[0]._id)">Donate</button>
+                    </a>
+                </td>
             </tr>
             <tr>
             </tr>

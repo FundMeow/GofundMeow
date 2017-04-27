@@ -7,6 +7,7 @@
 var app = angular.module('fundMeow',[]);
 
 app.controller('petCtrl', ['$scope', '$http', function($scope, $http) {
+
     $http.get('/users').then(function(data){
         $scope.users = data;
         $scope.pets = [];
@@ -14,17 +15,34 @@ app.controller('petCtrl', ['$scope', '$http', function($scope, $http) {
             $scope.pets.push($scope.users.data.users[i].pet);
         }
         console.log($scope.pets);
-    })
+    });
+
+    $scope.profile = function(userId){
+        console.log(userId);
+        // $scope._id = userId;
+        // $http.get('/user'+ userId).then(function(data){
+        //     console.log(data);
+        // })
+    }
+
 }]);
 app.controller('userCtrl', ['$scope', '$http', function($scope, $http) {
-    $http.get('/users').then(function(data){
-        $scope.user = data;
-        $scope.pet = [];
-        for(var i = 0; i < $scope.user.data.pet.length; i++){
-            $scope.pets.push($scope.user.data.user[i].pet);
-        }
-        console.log($scope.pet);
-    })
+
+    // var user_id = $scope._id;
+    // console.log(user_id);
+    //
+    //
+    // $http.get('/user'+ user_id).then(function(data){
+    //     console.log(data);
+    //     // $scope.user = data;
+    //     // $scope.pet = [];
+    //     // for(var i = 0; i < $scope.user.data.pet.length; i++){
+    //     //     $scope.pets.push($scope.user.data.user[i].pet);
+    //     // }
+    //     // console.log($scope.pet);
+    //
+    // })
+
 }]);
 app.controller('imageCtrl', ['$scope', '$http', function($scope, $http) {
     $scope.savePhoto = function () {
