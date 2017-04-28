@@ -29,9 +29,12 @@ app.config(function($routeProvider, $locationProvider){
                 }
             }
         })
-        .otherwise({
-            redirectTo: '/'
-        });
+        .when('/sign-up', {
+            templateUrl: 'signup.html'
+        })
+        // .otherwise({
+        //     redirectTo: '/'
+        // });
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -62,7 +65,7 @@ app.controller('mainCtrl',['$scope', function($scope, $routeParams) {
 }]);
 
 app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
-    function($scope, $http, userService, $routeParams, $rootScope) {
+    function($scope, $http, userService, $routeParams, $route, $localStorage, $location) {
 
     $http.get('/users').then(function(data){
         $scope.users = data;
@@ -72,16 +75,25 @@ app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
             $scope.pets[i]._id = $scope.users.data.users[i]._id;
         }
     });
+
+    $scope._id = 0;
+
     $scope.profile = function(userId){
-        userService.set(userId);
-    }
+        $scope._id = userId;
+    };
+    console.log($scope._id);
+    userService.set($scope._id);
+    $scope._id = $routeParams;
+
 }]);
 
 app.controller('userCtrl', ['$scope', '$http','userService',
-    function($scope, $http, userService, $routeParams ) {
+    function($scope, $http, userService, $routeParams, $localStorage ) {
     $scope._id = userService.get();
-    $scope._id = $routeParams.userId;
-    console.log(_id);
+    $http.get('/user/'+ $scope._id).then(function(data){
+        console.log(data);
+        $scope.user = data.data;
+    });
 
 }]);
 

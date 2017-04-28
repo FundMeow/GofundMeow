@@ -1,6 +1,7 @@
 <!doctype html>
 
 <html class="no-js" lang="">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -33,6 +34,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
         <script src="//unpkg.com/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
         <script src="js/app.js"></script>
         <!-- Latest compiled and minified JavaScript -->
     </head>
@@ -83,12 +85,11 @@
                 </div><!-- /.container-fluid -->
             </nav>
         <!--</div>-->
-        </header>
+    </header>
+
     <body ng-app="fundMeow">
          <!--Page views -->
          <div ng-controller="mainCtrl">
-
-             <a href="/user/:userId">Yea</a>
 
              <div ng-view></div>
 
@@ -102,4 +103,5 @@
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
     </body>
+
 </html>
