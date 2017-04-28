@@ -78,22 +78,28 @@ app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
     };
     console.log($scope.userId);
     userService.set($scope.userId);
+    $scope.userId = $routeParams.userId;
 
 }]);
 
 app.controller('userCtrl', ['$scope', '$http','userService',
     function($scope, $http, userService, $routeParams, $log, $location, $localStorage) {
-        var successfulcallback = function (response) {
-            $scope.userdetail = response.data;
-            $log.info(response);
-            console.log("now on the userdetails controller success")
 
-        };
-        var errorcallback = function (response) {
-            $scope.error = response.data;
-            $log.error(response);
-        };
-        $http.get('/api/users/'+ $routeParams.userId)
-            .then(successfulcallback, errorcallback);
+        $scope._id = userService.get();
+        // var successfulcallback = function (response) {
+        //     $scope.userdetail = response.data;
+        //     $log.info(response);
+        //     console.log("now on the userdetails controller success")
+        //
+        // };
+        // var errorcallback = function (response) {
+        //     $scope.error = response.data;
+        //     $log.error(response);
+        // // };
+        // $http.get('/users/'+ $scope._id)
+        //     .then(function(data){
+        //         console.log(data);
+        //     });
+
 }]);
 
