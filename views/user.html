@@ -8,19 +8,19 @@
 <h1 class="petsTitle">Pets</h1>
 
 <div class="container">
-    <div ng-controller="petCtrl">
+    <div ng-controller="userCtrl">
         <table class="table table-responsive" ng-repeat="pet in pets">
             <tr>
                 <td class="text-left"> <img src="content/CatVector.jpg" class="img-fluid image_container image_position" alt="Responsive image"></td>
-                    <td class=""><span class="petName">{{pet[0].name}}</span>
+                <td class=""><span class="petName">{{pet[0].name}}</span>
                     <br>
                     <br>
                     <span class="petInfo">
                     {{pet[0].info}}
                     </span>
-                    </td>
+                </td>
                 <td class="text-right">
-                    <a href="/user/{{pet[0].id}}">
+                    <a href="/user">
                         <button type="button" class="btnClass3" ng-click="profile(pet._id);">Donate</button>
                     </a>
                 </td>

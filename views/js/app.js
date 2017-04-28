@@ -4,71 +4,84 @@
 
 'use strict';
 
-var app = angular.module('fundMeow',[]);
+var app = angular.module('fundMeow', ['ngRoute']);
 
 
-app.factory('userService', function(){
-    var _user = {};
-    function set(data){
-        _user.push(data);
-        console.log(_user);
-    }
-    function get(){
-        console.log(user);
-        return _user
-    }
-    return {
-        set: set,
-        get: get
-    }
+app.config(function($routeProvider, $locationProvider){
+
+    $routeProvider
+        .when('/',{
+            templateUrl: 'home.html'
+        })
+        .when('/pets', {
+            templateUrl: 'pets.html',
+            controller: 'petCtrl'
+        })
+        .when('/user/:userId', {
+            templateUrl: 'user.html',
+            controller: 'userCtrl',
+            resolve: {
+                // I will cause a 1 second delay
+                delay: function ($q, $timeout) {
+                    var delay = $q.defer();
+                    $timeout(delay.resolve, 1000);
+                    return delay.promise;
+                }
+            }
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 });
 
-app.controller('petCtrl', ['$scope', '$http','userService', function($scope, $http, userService) {
+app.factory('userService', function () {
+
+    var data = {
+        _id: ''
+    };
+
+    return {
+        get: function () {
+            return data._id;
+        },
+        set: function (_id) {
+            data._id = _id;
+        }
+    };
+});
+app.run(['$route', function($route)  {
+    $route.reload();
+}]);
+
+app.controller('mainCtrl',['$scope', function($scope, $routeParams) {
+
+}]);
+
+app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
+    function($scope, $http, userService, $routeParams, $rootScope) {
 
     $http.get('/users').then(function(data){
         $scope.users = data;
         $scope.pets = [];
-        console.log($scope.users);
         for(var i = 0; i < $scope.users.data.users.length; i++){
             $scope.pets.push($scope.users.data.users[i].pet);
             $scope.pets[i]._id = $scope.users.data.users[i]._id;
         }
-        console.log($scope.pets);
     });
-
     $scope.profile = function(userId){
         userService.set(userId);
-        $http.get('/user/' + userId).then(function(data){
-            console.log(data.data.user);
-            $scope._user = data.data.user;
-        })
     }
 }]);
 
-app.controller('userCtrl', ['$scope', '$http', 'userService', function($scope, $http, userService) {
-
-    var user_id = userService.get();
-    console.log(user_id);
-    $http.get('/user/' + user_id).then(function(data){
-        console.log(data);
-        $scope._user = data.data.user;
-    })
+app.controller('userCtrl', ['$scope', '$http','userService',
+    function($scope, $http, userService, $routeParams ) {
+    $scope._id = userService.get();
+    $scope._id = $routeParams.userId;
+    console.log(_id);
 
 }]);
-
-app.controller('imageCtrl', ['$scope', '$http', function($scope, $http) {
-    $scope.savePhoto = function () {
-        var fd = new FormData();
-        fd.append("file", $scope.files[0]);
-
-    $http.post("", fd, {
-        withCredentials: true,
-        headers: { 'Content-Type': undefined },
-        transformRequest: angular.identity
-    }).success(function (data) {
-        $scope.image = data; // If you want to render the image after successfully uploading in your db
-    });
-};
-}]);
-
 

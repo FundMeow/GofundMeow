@@ -32,12 +32,12 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
     app.get('*', function(req, res) {
         res.sendFile('views/index.html' , { root : __dirname});
     });
-    app.get('*', function(req, res) {
-        res.sendFile('views/pets.html' , { root : __dirname});
-    });
-    app.get('*', function(req, res){
-        res.sendFile('views/users.html', {root: __dirname});
-    });
+    // app.get('*', function(req, res) {
+    //     res.sendFile('views/pets.html' , { root : __dirname});
+    // });
+    // app.get('*', function(req, res){
+    //     res.sendFile('views/users.html', {root: __dirname});
+    // });
 
     // Wait for the database connection to establish, then start the app.
     conn.on('error', console.error.bind(console, 'connection error:'));
