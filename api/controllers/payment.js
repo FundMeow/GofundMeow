@@ -3,9 +3,8 @@
  * Created by Christopher Corona on 4/26/2017.
  */
 
-
 'use strict';
-//npm install braintree
+
 var braintree = require('braintree');
 
 var gateway = braintree.connect({
@@ -28,8 +27,6 @@ function getToken (request, response) {
     });
 
 };
-
-
 
 function postPayment(request, response) {
 

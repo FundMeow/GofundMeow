@@ -1,9 +1,6 @@
 
 .topNav2 {
-    position: absolute;
-    height: 80px;
-    width: 80%;
-    left: 0;
+    visibility: hidden;
 }
 
 .picture_container2{
@@ -13,11 +10,10 @@
 }
 .picture_position2{
     position: absolute;
-    left: 4%;
-    top: 10px;
+    left: 25px;
+    top: 6px;
     width: 60px;
     height: 60px;
-    z-index:100;
 }
 
 .title2{
@@ -115,6 +111,7 @@
     }
     .topNav2{
         width: 104.2%;
+        visibility: visible;
     }
     .image_position{
         width: 100px;

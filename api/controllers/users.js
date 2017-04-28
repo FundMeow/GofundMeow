@@ -8,12 +8,8 @@ var User = require('../../models/user');
 var _ = require('lodash');
 var multer = require('multer');
 var upload = multer({dest: './uploads/'});
-var formidable = require("formidable");
 var fs = require('fs');
-var grid = require("gridfs-stream");
 var random = require("random-js")();
-var mongoose = require("mongoose");
-var conn = mongoose.connection;
 
 module.exports = {
     index: index,

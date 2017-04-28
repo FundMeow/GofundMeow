@@ -1,6 +1,7 @@
 <!doctype html>
 
-<html class="no-js" lang="" ng-app="fundMeow">
+<html class="no-js" lang="">
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -12,6 +13,9 @@
         <link rel="stylesheet" type="text/css" href="css/normalize.css">
         <link rel="stylesheet" type="text/css" href="css/main.css">
         <link rel="stylesheet" type="text/css" href="css/Styles.css">
+        <link rel="stylesheet" type="text/css" href="css/pet.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Vollkorn:400i" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark" rel="stylesheet">
 
@@ -28,18 +32,15 @@
        <!-- <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-theme.min.css">-->
         <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-overide.css">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+        <script src="js/app.js"></script>
         <!-- Latest compiled and minified JavaScript -->
     </head>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <header>
-            <div class="container">
-                <div class="row topNav" style="background-color: #b8d1bc">
-                    <img src="content/CatVector.jpg" class="img-fluid picture_container picture_position" alt="Responsive image">
-                </div>
-            </div>
-                <h1 class="title">FundMeow</h1>
+    <header>
             <nav class="navbar navbar-default">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,18 +55,18 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
-                            <li><a href="signup.html">Sign-up <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">Log-in</a></li>
+                            <li><a href="/sign-up">Sign-up <span class="sr-only">(current)</span></a></li>
+                            <li><a href="/log-in">Log-in</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
+                                    <li><a href="#">About</a></li>
+                                    <li><a href="#">Why Donate?</a></li>
+                                    <li><a href="#">More Info</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    <li><a href="#">Investors</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#">One more separated link</a></li>
+                                    <li><a href="#">CEO's</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -76,55 +77,23 @@
                             <button type="submit" class="btn btn-default">Submit</button>
                         </form>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
+                            <li><a href="/pets">Pets</a></li>
+                            <li><a href="/user">Profile</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
             </nav>
-        </header>
-        <body>
+        <!--</div>-->
+    </header>
 
-        <!-- Page Info -->
-            <div class="container">
-                <div class="row text-left">
-                    <div class="col-8"><h2 class="welcomeHeader">Welcome</h2></div>
-                </div>
-            </div>
-        <section id="photos">
-            <img src="content/labrador-retriever-dog-pictures-8.jpg" alt="Responsive image">
-            <img src="content/Screen_Shot_2016-10-04_at_11.16.03_AM_large.png" alt="Responsive image">
-            <img src="content/Husky-Wallpapers.jpg" alt="Responsive image">
-            <img src="content/cat.jpg" alt="Responsive image">
-            <img src="content/Bunny.jpg" alt="Responsive image">
-            <img src="content/dog.jpg" alt="Responsive image">
-            <img src="content/dog-shelter.jpg" alt="Responsive image">
-            <img src="content/adoptable-dogs-your-local-shelter.jpg" alt="Responsive image">
-            <img src="content/600px-meowing-cat.jpg" alt = "Responsive image">
-        </section>
-        <div class="container">
+    <body ng-app="fundMeow">
+         <!--Page views -->
+         <div ng-controller="mainCtrl">
 
+             <div ng-view></div>
 
-            <div class="textField">Donate <br> Today...</div>
-            <!--<div class="textField">Donate <br> Today...</div>-->
-
-        </div>
-        <div class="box lead">"A place to make your mark on a animals life today. Give charity to suffering animals and shelters who need the help.
-            Animals need the love we can give. Go FundMeow."</div>
-
-        <a href="pets.html"><button type="button" class="btnClass">Pets</button></a>
-        <button type="button" class="btnClass2" href="users.html">Shelters</button>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
+         </div>
+         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
             e=o.createElement(i);r=o.getElementsByTagName(i)[0];
@@ -133,4 +102,5 @@
             ga('create','UA-XXXXX-X','auto');ga('send','pageview');
         </script>
     </body>
+
 </html>
