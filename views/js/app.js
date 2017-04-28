@@ -17,17 +17,9 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: 'pets.html',
             controller: 'petCtrl'
         })
-        .when('/user/:userId', {
+        .when('/user/:userId/profile', {
             templateUrl: 'user.html',
-            controller: 'userCtrl',
-            resolve: {
-                // I will cause a 1 second delay
-                delay: function ($q, $timeout) {
-                    var delay = $q.defer();
-                    $timeout(delay.resolve, 1000);
-                    return delay.promise;
-                }
-            }
+            controller: 'userCtrl'
         })
         .when('/sign-up', {
             templateUrl: 'signup.html'
@@ -60,7 +52,10 @@ app.run(['$route', function($route)  {
     $route.reload();
 }]);
 
-app.controller('mainCtrl',['$scope', function($scope, $routeParams) {
+app.controller('mainCtrl',['$scope', function($scope, $routeParams, $route, $location) {
+    $scope.$route = $route;
+    $scope.$location = $location;
+    $scope.$routeParams = $routeParams;
 
 }]);
 
@@ -76,24 +71,29 @@ app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
         }
     });
 
-    $scope._id = 0;
+    $scope.userId = 0;
 
     $scope.profile = function(userId){
-        $scope._id = userId;
+        $scope.userId = userId;
     };
-    console.log($scope._id);
-    userService.set($scope._id);
-    $scope._id = $routeParams;
+    console.log($scope.userId);
+    userService.set($scope.userId);
 
 }]);
 
 app.controller('userCtrl', ['$scope', '$http','userService',
-    function($scope, $http, userService, $routeParams, $localStorage ) {
-    $scope._id = userService.get();
-    $http.get('/user/'+ $scope._id).then(function(data){
-        console.log(data);
-        $scope.user = data.data;
-    });
+    function($scope, $http, userService, $routeParams, $log, $location, $localStorage) {
+        var successfulcallback = function (response) {
+            $scope.userdetail = response.data;
+            $log.info(response);
+            console.log("now on the userdetails controller success")
 
+        };
+        var errorcallback = function (response) {
+            $scope.error = response.data;
+            $log.error(response);
+        };
+        $http.get('/api/users/'+ $routeParams.userId)
+            .then(successfulcallback, errorcallback);
 }]);
 
