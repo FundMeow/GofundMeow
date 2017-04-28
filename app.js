@@ -12,6 +12,56 @@ var config = {
     appRoot: __dirname // required config
 };
 
+var braintree = require('braintree');
+var bodyParser = require('body-parser');
+var parseUrlEnconded = bodyParser.urlencoded({
+    extended: false
+});
+var gateway = braintree.connect({
+    environment:  braintree.Environment.Sandbox,
+    merchantId:   '86smvm5pk58rw9wf',
+    publicKey:    'fmz87pkcpg9xhyv4',
+    privateKey:   'd8b03cee1ba2e26a25ccc97d8a95a28c'
+});
+
+
+app.get('/payment', function (request, response) {
+
+    gateway.clientToken.generate({}, function (err, res) {
+        response.render('payment', {
+            clientToken: res.clientToken
+        });
+    });
+
+});
+
+app.post('/process', parseUrlEnconded, function (request, response) {
+
+    var transaction = request.body;
+
+    gateway.transaction.sale({
+        amount: transaction.amount,
+        paymentMethodNonce: transaction.payment_method_nonce
+    }, function (err, result) {
+
+        if (err) throw err;
+
+        if (result.success) {
+
+            console.log(result);
+
+            response.sendFile('success.html', {
+                root: './views'
+            });
+        } else {
+            response.sendFile('error.html', {
+                root: './views'
+            });
+        }
+    });
+
+});
+
 SwaggerExpress.create(config, function(err, swaggerExpress) {
     if (err) { throw err; }
     // install middleware
@@ -38,6 +88,11 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
     // app.get('*', function(req, res){
     //     res.sendFile('views/users.html', {root: __dirname});
     // });
+
+    app.use(express.static('views'));
+
+    //app.set('views/index.html', __dirname + '/views');
+    app.set('view engine', 'ejs');
 
     // Wait for the database connection to establish, then start the app.
     conn.on('error', console.error.bind(console, 'connection error:'));
