@@ -25,23 +25,24 @@
                 <div class="col-lg-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10022;&nbsp;&nbsp;{{user.user.phoneNumber}}</div>
             </div>
 
-        <table class="table table-responsive userInfo" ng-repeat="pet in pets">
-            <tr>
-                <td class="text-left"><span style="font-size: 36px; font-weight: bold;
+            <div class="container userContainer userInfo">
+                <table class="table table-responsive" ng-repeat="pet in pets">
+                    <tr>
+                        <td class="text-left"><span style="font-size: 36px; font-weight: bold;
                 text-shadow: 5px 5px 5px #63635e; color: #ff828c">{{pet.name}}</span></td>
-                <td class="text-center"><p style="margin-top: 10px;">{{pet.info}}</p></td>
-            </tr>
-            <tr>
-                <td class="text-left"><p><span style="font-weight: bolder; font-size: 24px;">Funds:</span>
-                    &nbsp;&nbsp;&nbsp;<span style="font-weight: 300; font-size: 18px;">{{pet.funds}}</span></p></td>
-                <td class="text-center">
-                    <a href="/payment">
-                        <button type="button" class="btnClass4" ng-click="">Donate</button>
-                    </a>
-                </td>
-            </tr>
-        </table>
-
+                        <td class="text-center"><p style="margin-top: 10px;">{{pet.info}}</p></td>
+                    </tr>
+                    <tr>
+                        <td class="text-left"><p><span style="font-weight: bolder; font-size: 24px;">Funds:</span>
+                            &nbsp;&nbsp;&nbsp;<span style="font-weight: 300; font-size: 18px;">{{pet.funds}}</span></p></td>
+                        <td class="text-center">
+                            <a href="/payment">
+                                <button type="button" class="btnClass4" ng-click="">Donate</button>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
     </div>
         </div>
     </div>

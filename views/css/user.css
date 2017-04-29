@@ -41,20 +41,26 @@
     font-family: "Avenir Next",'Palanquin Dark', sans-serif, serif;
     color: #4A4A4A;
     font-size: 18px;
-    position:relative;
-    top: 250px;
+    position:absolute;
+    top: 85%;
+    margin-right: 50px;
+}
+.userContainer{
+    height: 300px;
+    overflow: auto;
+    margin-bottom: 100px;
+    /*border-top: 2px solid black;*/
 }
 
 .userDetails{
 
     position: relative;
-    top: 200px;
+    top: 150px;
     left: 200px;
     font-family: 'Arial','Palanquin Dark', sans-serif, serif;
     font-size: 34px;
     color: #4A4A4A;
     font-style: italic;
-
 
 }
 .userBullets{
@@ -63,7 +69,6 @@
     font-family: 'Arial','Palanquin Dark', sans-serif, serif;
     font-size: 36px;
     color: #4A4A4A;
-
 
 }
 .btnClass4{
