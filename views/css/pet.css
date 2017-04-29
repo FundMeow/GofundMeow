@@ -127,3 +127,10 @@
         font-size: 18px;
     }
 }
+.tableFlow{
+    overflow: auto;
+    height: 500px;
+    margin-top: 50px;
+
+
+}

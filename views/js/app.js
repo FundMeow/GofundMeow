@@ -73,8 +73,6 @@ app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
         $scope.userId = userId;
         userService.set($scope.userId);
     };
-
-    console.log($scope.userId);
     userService.set($scope.userId);
     $scope.userId = $routeParams.userId;
 
@@ -89,12 +87,23 @@ app.controller('userCtrl', ['$scope', '$http','userService',
         }).then(function(data){
             $scope.user = data.data;
             $scope.pets = [];
+            $scope.img = _arrayBufferToBase64($scope.user.img);
             for(var i = 0; i < $scope.user.user.pet.length; i++){
                 $scope.pets.push($scope.user.user.pet[i]);
 
             }
-            console.log($scope.pets);
+           // console.log($scope.pets);
 
-        })
+        });
+
+        function _arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
 }]);
 
