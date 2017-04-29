@@ -17,16 +17,16 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: 'pets.html',
             controller: 'petCtrl'
         })
-        .when('/user/:userId/profile', {
+        .when('/user/:userId/user_profile', {
             templateUrl: 'user.html',
             controller: 'userCtrl'
         })
         .when('/sign-up', {
             templateUrl: 'signup.html'
         })
-        // .otherwise({
-        //     redirectTo: '/'
-        // });
+        .otherwise({
+            redirectTo: '/'
+        });
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -38,7 +38,6 @@ app.factory('userService', function () {
     var data = {
         _id: ''
     };
-
     return {
         get: function () {
             return data._id;
@@ -48,9 +47,6 @@ app.factory('userService', function () {
         }
     };
 });
-app.run(['$route', function($route)  {
-    $route.reload();
-}]);
 
 app.controller('mainCtrl',['$scope', function($scope, $routeParams, $route, $location) {
     $scope.$route = $route;
@@ -75,25 +71,25 @@ app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
 
     $scope.profile = function(userId){
         $scope.userId = userId;
+        userService.set($scope.userId);
     };
-    console.log($scope.userId);
-    userService.set($scope.userId);
-
 }]);
 
 app.controller('userCtrl', ['$scope', '$http','userService',
     function($scope, $http, userService, $routeParams, $log, $location, $localStorage) {
-        var successfulcallback = function (response) {
-            $scope.userdetail = response.data;
-            $log.info(response);
-            console.log("now on the userdetails controller success")
 
-        };
-        var errorcallback = function (response) {
-            $scope.error = response.data;
-            $log.error(response);
-        };
-        $http.get('/api/users/'+ $routeParams.userId)
-            .then(successfulcallback, errorcallback);
+        var _id = userService.get();
+        $http.get('/user/' + _id, {
+            cache: true
+        }).then(function(data){
+            $scope.user = data.data;
+            $scope.pets = [];
+            for(var i = 0; i < $scope.user.user.pet.length; i++){
+                $scope.pets.push($scope.user.user.pet[i]);
+
+            }
+            console.log($scope.pets);
+
+        })
 }]);
 

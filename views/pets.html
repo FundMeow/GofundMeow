@@ -9,18 +9,19 @@
 
 <div class="container">
     <div ng-controller="petCtrl">
-        <table class="table table-responsive" ng-repeat="pet in pets">
+        <div ng-repeat="pet in pets">
+        <table class="table table-responsive" ng-repeat="userPet in pet">
             <tr>
                 <td class="text-left"> <img src="content/CatVector.jpg" class="img-fluid image_container image_position" alt="Responsive image"></td>
-                    <td class=""><span class="petName">{{pet[0].name}}</span>
+                    <td class=""><span class="petName">{{userPet.name}}</span>
                     <br>
                     <br>
                     <span class="petInfo">
-                    {{pet[0].info}}
+                    {{userPet.info}}
                     </span>
                     </td>
                 <td class="text-right">
-                    <a href="/user/{{pet._id}}/profile">
+                    <a href="/user/{{pet._id}}/user_profile">
                         <button type="button" class="btnClass3" ng-click="profile(pet._id);">Donate</button>
                     </a>
                 </td>
@@ -28,5 +29,6 @@
             <tr>
             </tr>
         </table>
+        </div>
     </div>
 </div>
