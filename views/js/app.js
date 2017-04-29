@@ -73,6 +73,11 @@ app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
         $scope.userId = userId;
         userService.set($scope.userId);
     };
+
+    console.log($scope.userId);
+    userService.set($scope.userId);
+    $scope.userId = $routeParams.userId;
+
 }]);
 
 app.controller('userCtrl', ['$scope', '$http','userService',
