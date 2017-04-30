@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute']);
+var app = angular.module('fundMeow', ['ngRoute', /*'ngFileUpload'*/]);
 
 
 app.config(function($routeProvider, $locationProvider){
@@ -81,8 +81,8 @@ app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
 
 }]);
 
-app.controller('userCtrl', ['$scope', '$http','userService',
-    function($scope, $http, userService, $routeParams, $log, $location, $localStorage) {
+app.controller('userCtrl', ['$scope', '$http','userService', 'Upload',
+    function($scope, $http, userService, Upload, $routeParams, $log, $location, $localStorage) {
 
         var _id = userService.get();
         $http.get('/user/' + _id, {
@@ -108,5 +108,41 @@ app.controller('userCtrl', ['$scope', '$http','userService',
             }
             return window.btoa(binary);
         }
+
+        //Image upload
+        $scope.upload = function(dataUrl, name) {
+            Upload.upload({
+                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',//'localhost:8080/user/' + $scope.userId + '/petpicture',
+                data: {
+                    file: Upload.dataUrltoBlob(dataUrl, name)
+                },
+            }).then(function(response) {
+                $timeout(function() {
+                    $scope.result = response.data;
+                });
+            }, function(response) {
+                if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+            }, function(evt) {
+                $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+            });
+        }
 }]);
 
+// app.controller('imageCtrl', ['$scope', 'Upload', '$timeout', function($scope, Upload, $timeout) {
+//     $scope.upload = function(dataUrl, name) {
+//         Upload.upload({
+//             url: 'localhost:8080/user/' + $scope.userId + '/petpicture',
+//             data: {
+//                 file: Upload.dataUrltoBlob(dataUrl, name)
+//             },
+//         }).then(function(response) {
+//             $timeout(function() {
+//                 $scope.result = response.data;
+//             });
+//         }, function(response) {
+//             if (response.status > 0) $scope.errorMsg = response.status + ': ' + response.data;
+//         }, function(evt) {
+//             $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+//         });
+//     }
+// }]);
