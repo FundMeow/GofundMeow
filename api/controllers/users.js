@@ -59,7 +59,6 @@ function create(req,res){
 //get a single user
 function show(req,res){
     User.findById(req.swagger.params.userId.value, function(err, user){
-
         if(err){
             res.status(500).json(err).end();
             return;
@@ -139,7 +138,6 @@ function postImage(req,res){
         }
         else
         User.findById(req.swagger.params.userId.value, function(err, user){
-
             fs.readFile('uploads/'+ file.originalname, function(err, img){
                 if(err){
                     res.json({err: err});

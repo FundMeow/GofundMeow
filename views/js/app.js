@@ -90,13 +90,12 @@ app.controller('userCtrl', ['$scope', '$http','userService',
         }).then(function(data){
             $scope.user = data.data;
             $scope.pets = [];
-            $scope.img = _arrayBufferToBase64($scope.user.img);
+            $scope.img = _arrayBufferToBase64(data.data.user.img.data);
+            // console.log($scope.img);
             for(var i = 0; i < $scope.user.user.pet.length; i++){
                 $scope.pets.push($scope.user.user.pet[i]);
-
             }
            // console.log($scope.pets);
-
         });
 
         function _arrayBufferToBase64(buffer) {
