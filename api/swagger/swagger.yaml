@@ -168,7 +168,7 @@ paths:
 
   /user/{userId}/petpicture:
     x-swagger-router-controller: users
-    get:
+    post:
       description: Posts a image to a user
       operationId: getImage
       consumes:
@@ -183,7 +183,7 @@ paths:
         "200":
           description: successfully uploaded a image
           schema:
-            $ref: "#/definitions/UserBody"
+            type: string
         default:
           description: error
           schema:
