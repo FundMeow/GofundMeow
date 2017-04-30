@@ -145,12 +145,14 @@
     .navbar-nav {
         float: none!important;
         margin: 7.5px -15px;
+        margin-bottom: 20px;
     }
     .navbar-nav>li {
         float: none;
     }
     .navbar-nav>li>a {
-        padding-top: 10px;
+        font-size: 35px;
+        padding-top: 20px;
         padding-bottom: 10px;
 
     }
@@ -161,7 +163,7 @@
         margin-top: -110px;
     }
     .nav{
-
+        border-top: 0;
     }
     .collapse{
         border-top: 0;
@@ -171,4 +173,15 @@
 .table-responsive{
     border-top: 2px solid;
 
+}
+@media (min-width: 768px) {
+    .navbar-right .dropdown-menu {
+        margin-top: 5px;
+        right: 0;
+        left: auto;
+    }
+    .navbar-right .dropdown-menu-left {
+        right: auto;
+        left: 0;
+    }
 }

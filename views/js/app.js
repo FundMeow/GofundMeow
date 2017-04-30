@@ -24,6 +24,9 @@ app.config(function($routeProvider, $locationProvider){
         .when('/sign-up', {
             templateUrl: 'signup.html'
         })
+        .when('/payment', {
+            templateUrl: 'payment.ejs'
+        })
         .otherwise({
             redirectTo: '/'
         });

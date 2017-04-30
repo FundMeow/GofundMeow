@@ -82,12 +82,6 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
     app.get('*', function(req, res) {
         res.sendFile('views/index.html' , { root : __dirname});
     });
-    // app.get('*', function(req, res) {
-    //     res.sendFile('views/pets.html' , { root : __dirname});
-    // });
-    // app.get('*', function(req, res){
-    //     res.sendFile('views/users.html', {root: __dirname});
-    // });
 
     app.use(express.static('views'));
 
