@@ -1,39 +1,57 @@
 
 .profile_image_container{
-    max-width: 500px;
+    max-width: 300px;
     border-radius: 200px;
     border: 2px solid ghostwhite;
 }
 .profile_image_position{
-    position: absolute;
-    left: 19%;
-    top: 250px;
-    width: 300px;
-    height: 300px;
+    left: 2%;
+    top: 30%;
+    width: 200px;
+    height: 200px;
     z-index:100;
 }
 .userName{
-
-    font-family: 'Arial','Palanquin Dark', sans-serif, serif;
+    font-family: "Kozuka Mincho Pro",'Palanquin Dark', sans-serif, serif;
     font-size: 64px;
     color: #4A4A4A;
-    position: relative;
-    left: 36%;
+    left: 10%;
     font-weight: 400;
-    bottom: 60px;
-    font-style: italic;
     text-overflow: ellipsis;
-
 }
 .userPetTitle{
-
-    font-size: 64px;
+    position: absolute;
+    left: 65%;
+    top: 25%;
+    font-size: 84px;
     font-family: "Minion Pro",'Palanquin Dark', sans-serif, serif;
-    position: relative;
-    top: 300px;
-    left: 20%;
     font-weight: bolder;
+}
+.rowPosition{
+    position: absolute;
+    left: 5%;
+    top: 18%;
 
+}
+.detailsPosition{
+
+    position: absolute;
+    left: 4%;
+    top: 35%;
+    width: 500px;
+
+}
+.userDetails{
+    font-family: 'Arial','Palanquin Dark', sans-serif, serif;
+    font-size: 24px;
+    color: #4A4A4A;
+    font-style: italic;
+
+}
+.userBullets{
+    font-family: 'Arial','Palanquin Dark', sans-serif, serif;
+    font-size: 24px;
+    color: #4A4A4A;
 }
 .userInfo{
 
@@ -41,42 +59,26 @@
     font-family: "Avenir Next",'Palanquin Dark', sans-serif, serif;
     color: #4A4A4A;
     font-size: 18px;
-    position:absolute;
-    top: 85%;
     /*margin-right: 50px;*/
 }
 .userContainer{
-    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 38%;
+    height: 200px;
+    width: 600px;
     overflow: auto;
-    margin-bottom: 100px;
+    box-shadow: 1px 2px 2px 3px #72676c;
+    background-color: white;
     /*border-top: 2px solid black;*/
 }
 
-.userDetails{
-
-    position: relative;
-    top: 150px;
-    left: 200px;
-    font-family: 'Arial','Palanquin Dark', sans-serif, serif;
-    font-size: 34px;
-    color: #4A4A4A;
-    font-style: italic;
-
-}
-.userBullets{
-    position: relative;
-    left: 520px;
-    font-family: 'Arial','Palanquin Dark', sans-serif, serif;
-    font-size: 36px;
-    color: #4A4A4A;
-
-}
 .btnClass4{
     width: 150px;
     height: 60px;
     border-radius: 10px;
     color: #4A4A4A;
-    font-size: 36px;
+    font-size: 24px;
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
     border: 1px solid #3c3c3c;

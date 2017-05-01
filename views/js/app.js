@@ -4,9 +4,9 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute']);
+var app = angular.module('fundMeow', ['ngRoute','ngCookies']);
 
-
+//Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
 
     $routeProvider
@@ -36,21 +36,7 @@ app.config(function($routeProvider, $locationProvider){
     });
 });
 
-app.factory('userService', function () {
-
-    var data = {
-        _id: ''
-    };
-    return {
-        get: function () {
-            return data._id;
-        },
-        set: function (_id) {
-            data._id = _id;
-        }
-    };
-});
-
+//Main Controller. No main functionality.
 app.controller('mainCtrl',['$scope', function($scope, $routeParams, $route, $location) {
     $scope.$route = $route;
     $scope.$location = $location;
@@ -58,46 +44,66 @@ app.controller('mainCtrl',['$scope', function($scope, $routeParams, $route, $loc
 
 }]);
 
-app.controller('petCtrl', ['$scope', '$http','userService','$routeParams',
-    function($scope, $http, userService, $routeParams, $route, $localStorage, $location) {
+app.controller('petCtrl', ['$scope', '$http','$routeParams',
+    function($scope, $http, $routeParams) {
 
+//Getting User information.
     $http.get('/users').then(function(data){
+
         $scope.users = data;
         $scope.pets = [];
+        $scope.imgArray = [];
+
+        //Assigning new angular objects data from the request.
         for(var i = 0; i < $scope.users.data.users.length; i++){
+            $scope.img = _arrayBufferToBase64($scope.users.data.users[i].img.data);
+            $scope.imgArray.push($scope.img);
             $scope.pets.push($scope.users.data.users[i].pet);
             $scope.pets[i]._id = $scope.users.data.users[i]._id;
         }
+
+        //Assigning each pet a image. Hard coded for time purposes.
+        var j = 0;
+        $scope.pets.forEach(function (newPet) {
+            newPet.img = $scope.imgArray[j];
+            j++;
+        });
+        console.log($scope.pets);
     });
 
-    $scope.userId = 0;
-
-    $scope.profile = function(userId){
-        $scope.userId = userId;
-        userService.set($scope.userId);
-    };
-    userService.set($scope.userId);
-    $scope.userId = $routeParams.userId;
-
+//Function to convert buffer to base64
+    function _arrayBufferToBase64(buffer) {
+            var binary = '';
+            var bytes = new Uint8Array(buffer);
+            var len = bytes.byteLength;
+            for (var i = 0; i < len; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return window.btoa(binary);
+        }
 }]);
 
-app.controller('userCtrl', ['$scope', '$http','userService',
-    function($scope, $http, userService, $routeParams, $log, $location, $localStorage) {
+//User profile Controller.
+app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
+    function($scope, $http, $cookieStore, $routeParams) {
 
-        var _id = userService.get();
-        $http.get('/user/' + _id, {
+    //Get user Id and use it to retrieve the user info from the API. with a http request.
+
+        //gets Id from URL path.
+        var __id = $routeParams.userId;
+
+        $http.get('/user/' + __id, {
             cache: true
         }).then(function(data){
             $scope.user = data.data;
             $scope.pets = [];
             $scope.img = _arrayBufferToBase64(data.data.user.img.data);
-            // console.log($scope.img);
             for(var i = 0; i < $scope.user.user.pet.length; i++){
                 $scope.pets.push($scope.user.user.pet[i]);
             }
-           // console.log($scope.pets);
         });
 
+    //Converting image to base64.
         function _arrayBufferToBase64(buffer) {
             var binary = '';
             var bytes = new Uint8Array(buffer);
@@ -107,5 +113,6 @@ app.controller('userCtrl', ['$scope', '$http','userService',
             }
             return window.btoa(binary);
         }
+
 }]);
 

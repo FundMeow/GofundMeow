@@ -29,41 +29,35 @@
 </form>
 </div>
 -->
-<div ng-controller="userCtrl">
 
-    <div class="container">
-        <div class="row userName">{{user.user.firstName}}&nbsp;{{user.user.lastName}}</div>
-        <img src="data:image/png;base64,{{img}}" class="img-fluid profile_image_container profile_image_position userImage" alt="user image">
-        <div class="row"><span class="userPetTitle"></span></div>
-        <div>
-            <div class="userBullets">
-                &#10049; &nbsp; Age: {{user.user.age}}<br>
-                &#10049; &nbsp; Location: {{user.user.location}}
+<div class="container">
+    <div class="row rowPosition">
+        <div class="detailsPosition">
+            <div class="panel panel-default" style="max-width: 600px;">
+                <div class="userName panel-heading text-center">{{user.user.firstName}}&nbsp;{{user.user.lastName}}</div>
+                <div class="userBullets panel-body text-center">
+                    <div class="row"><img src="data:image/png;base64,{{img}}" class="img-fluid profile_image_container
+                    profile_image_position userImage" alt="user image"></div>
+                    &#10022; &nbsp; Age: {{user.user.age}}<br>
+                    &#10022; &nbsp; Location: {{user.user.location}}
+                    <div>&#10022;&nbsp;&nbsp;{{user.user.email}}</div>
+                    <div>&#10022;  {{user.user.phoneNumber}}</div>
+                </div>
             </div>
+        </div>
+    </div>
 
-            <div class="row userDetails">
-                <div class="col-lg-4">&#10022;&nbsp;&nbsp;{{user.user.email}}</div>
-                <div class="col-lg-4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10022;&nbsp;&nbsp;{{user.user.phoneNumber}}</div>
-            </div>
-
-            <div class="container userContainer userInfo">
-                <table class="table table-responsive" ng-repeat="pet in pets">
-                    <tr>
-                        <td class="text-left"><span style="font-size: 36px; font-weight: bold;
+    <div>
+        <div class="userPetTitle">Pets</div>
+        <div class="row userContainer userInfo">
+            <table class="table table-responsive" style="border-top: 0 !important;" ng-repeat="pet in pets">
+                <tr><td class="text-left"><span style="font-size: 36px; font-weight: bold;
                 text-shadow: 5px 5px 5px #63635e; color: #ff828c">{{pet.name}}</span></td>
-                        <td class="text-center"><p style="margin-top: 10px;">{{pet.info}}</p></td>
-                    </tr>
-                    <tr>
-                        <td class="text-left"><p><span style="font-weight: bolder; font-size: 24px;">Funds:</span>
-                            &nbsp;&nbsp;&nbsp;<span style="font-weight: 300; font-size: 18px;">{{pet.funds}}</span></p></td>
-                        <td class="text-center">
-                            <a href="/payment">
-                                <button type="button" class="btnClass4" ng-click="">Donate</button>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                    <td class="text-center"><p style="margin-top: 10px;">{{pet.info}}</p></td></tr>
+                <tr><td class="text-left"><p><span style="font-weight: bolder; font-size: 24px;">Funds:</span>&nbsp;&nbsp;&nbsp<span style="font-weight: 300; font-size: 18px;">{{pet.funds}}</span></p></td>
+                    <td class="text-center"><a href="/payment"><button type="button" class="btnClass4" ng-click="">Donate</button></a></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

@@ -1,32 +1,28 @@
 
+<!--Added styles to the header-->
 <div class="row topNav2" style="background-color: #b8d1bc">
 </div>
 
+<!--Header Logo-->
 <img src="content/CatVector.jpg" class="img-fluid picture_container2 picture_position2" alt="Responsive image">
 
+<!--Header Title-->
 <a href="/"><h1 class="title2">FundMeow</h1></a>
 <h1 class="petsTitle">Pets</h1>
 
+<!--Table-->
 <div class="container tableFlow">
-    <div ng-controller="petCtrl">
-        <div ng-repeat="pet in pets">
+    <div ng-repeat="pet in pets">
         <table class="table table-responsive" ng-repeat="userPet in pet">
             <tr>
-                <td class="text-left"> <img src="content/CatVector.jpg" class="img-fluid image_container image_position" alt="Responsive image"></td>
-                    <td class=""><span class="petName">{{userPet.name}}</span>
-                    <br>
-                    <br>
-                    <span class="petInfo">
-                    {{userPet.info}}
-                    </span>
-                    </td>
-                <td class="text-right">
-                    <a href="/user/{{pet._id}}/user_profile">
-                        <button type="button" class="btnClass3" ng-click="profile(pet._id);">Donate</button>
-                    </a>
-                </td>
-            </tr>
-            <tr>
+                <td class="">
+                    <img src="data:image/png;base64,{{pet.img}}" class="img-fluid image_container image_position" alt="Responsive image"></td>
+
+                <td class=""><span class="petName">{{userPet.name}}</span>
+                    <br><br><span class="petInfo text-info well" style="max-width: 100px;">{{userPet.info}}</span></td>
+
+                <td class="text-left"><a href="/user/{{pet._id}}/user_profile">
+                        <button type="button" class="btnClass3" ng-click="profile(pet._id);">Donate</button></a></td>
             </tr>
         </table>
         </div>
