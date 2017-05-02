@@ -173,12 +173,22 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
                                         console.log($scope.user.user.pet[i]._id);
                                         console.log($routeParams.petId);
                                         if($scope.user.user.pet[i]._id == $routeParams.petId){
+                                            $scope._user ={
+                                                userName: $scope.user.user.userName,
+                                                passWord: $scope.user.user.passWord,
+                                                firstName: $scope.user.user.firstName,
+                                                lastName: $scope.user.user.lastName,
+                                                pet: []
+                                            };
+                                            console.log($scope._user);
                                             $scope.user.user.pet[i].funds += funds;
+                                            $scope._user.pet.push($scope.user.user.pet[i]);
+                                            console.log($scope._user);
                                             $http({
                                                 method: 'PUT',
                                                 url: '/user/'+_id,
                                                 data:{
-                                                    user: $scope.user.user.pet[i].funds
+                                                    user: $scope._user
                                                 }
                                             }).then(function(data){
                                                 console.log(data);
