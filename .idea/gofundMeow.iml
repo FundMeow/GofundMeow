@@ -11,5 +11,6 @@
     <orderEntry type="library" name="angular-route" level="application" />
     <orderEntry type="library" name="ngStorage" level="application" />
     <orderEntry type="library" name="angular-cookies" level="application" />
+    <orderEntry type="library" name="braintree-2.32.0" level="application" />
   </component>
 </module>
