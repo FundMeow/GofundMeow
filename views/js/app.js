@@ -24,13 +24,14 @@ app.config(function($routeProvider, $locationProvider){
         .when('/sign-up', {
             templateUrl: 'signup.html'
         })
-        .when('user/:userId/pet/:petId', {
+        .when('user/:userId/pet_donate/:petId', {
             templateUrl: 'payment.html',
             controller: 'paymentCtrl'
         })
         .otherwise({
             redirectTo: '/'
         });
+
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -116,8 +117,6 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
         }
 
 }]);
-
-
 
 app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
     function($scope, $http, $cookieStore, $routeParams) {
