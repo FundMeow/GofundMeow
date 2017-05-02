@@ -118,17 +118,38 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 }]);
 
 
-
+/*
 app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
     function($scope, $http, $cookieStore, $routeParams) {
 
-            var _id = $routeParams.userId;
-            $scope.funds = 0;
+        var _id = $routeParams.userId;
+        $scope.funds = 0;
 
-            $http.get('/user/' + _id).then(function(data){
+        $http.get('/user/' + _id).then(function(data){
 
+            $scope.user = data.data;
+            for(var i = 0; i < $scope.user.pet.length; i++){
 
+                if($scope.user.pet[i]._id == $routeParams.petId){
 
-            });
+                    $scope.user.pet[i].funds += funds;
+                }
+            }
+
+            $http.put('/user/' + _id, $scope.user).then(function(data){
+
+            })
+
+        });
+        $http.get('/payment').then(function(data){
+            braintree.setup(data);
+        });
+        $http.post('/process', data).then(function(data){
+
+            console.log(data);
+            $scope.success = 'Youre payment is successful!';
+        })
 
     }]);
+
+    */
