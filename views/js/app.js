@@ -134,7 +134,6 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 
                 console.log(data.client_token);
 
-
                 braintree.setup(data.client_token, 'dropin', {
                     container: 'checkout',
                     // Form is not submitted by default when paymentMethodNonceReceived is implemented
