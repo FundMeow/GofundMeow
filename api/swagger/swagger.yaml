@@ -126,7 +126,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     put:
       description: Update a single user entry by Id
-      operationId: petupdate
+      operationId: update
       parameters:
         - name: userId
           required: true
