@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute']);
+var app = angular.module('fundMeow', ['ngRoute','ngCookies']);
 
 //Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
@@ -24,8 +24,8 @@ app.config(function($routeProvider, $locationProvider){
         .when('/sign-up', {
             templateUrl: 'signup.html'
         })
-        .when('user/:userId/pet_donate/:petId', {
-            templateUrl: 'payment.html',
+        .when('/user/:userId/pet_donate/:petId', {
+            templateUrl: 'transaction.html',
             controller: 'paymentCtrl'
         })
         .otherwise({
@@ -119,6 +119,7 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 
 app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
     function($scope, $http, $cookieStore, $routeParams) {
+    console.log($routeParams.petId);
         $scope.message = 'Please use the form below to pay:';
         $scope.showDropinContainer = true;
         $scope.isError = false;
@@ -167,7 +168,7 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
                                         if($scope.user.pet[i]._id == $routeParams.petId){
                                             $scope.user.pet[i].funds += funds;
                                             $http.put('/user/' + _id).then(function (data) {
-                                                
+
                                             })
                                         }
                                     }

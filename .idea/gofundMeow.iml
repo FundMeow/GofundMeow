@@ -11,18 +11,23 @@
     <orderEntry type="library" name="angular-route" level="application" />
     <orderEntry type="library" name="ngStorage" level="application" />
     <orderEntry type="library" name="angular-cookies" level="application" />
-<<<<<<< HEAD
     <orderEntry type="library" name="angular" level="application" />
     <orderEntry type="library" name="jquery-1.12.0" level="application" />
     <orderEntry type="library" name="jquery-2.1.1" level="application" />
-    <orderEntry type="library" name="tether" level="application" />
     <orderEntry type="library" name="angular-route" level="application" />
-=======
-<<<<<<< HEAD
-=======
->>>>>>> f3b046eb727d9f3ccfae0a00e663231b90ef5d2c
->>>>>>> 7885f077fe36a0fd4a81df89ff699b6823d9904d
     <orderEntry type="library" name="braintree-2.32.0" level="application" />
->>>>>>> f3b046eb727d9f3ccfae0a00e663231b90ef5d2c
+    <orderEntry type="library" name="angular-ui-router" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
+    <orderEntry type="library" name="express-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="jquery-1.12.4" level="application" />
+    <orderEntry type="library" name="jquery-2.0.3" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="kendo.all" level="application" />
+    <orderEntry type="library" name="moment" level="application" />
+    <orderEntry type="library" name="mongodb-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="mongoose-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="ng-file-upload" level="application" />
+    <orderEntry type="library" name="ng-file-upload-shim" level="application" />
   </component>
 </module>
