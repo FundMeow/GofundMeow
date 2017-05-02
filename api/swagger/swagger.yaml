@@ -81,7 +81,6 @@ paths:
           description: error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
   /user/{userId}:
     x-swagger-router-controller: users
     get:
@@ -127,7 +126,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     put:
       description: Update a single user entry by Id
-      operationId: update
+      operationId: petupdate
       parameters:
         - name: userId
           required: true

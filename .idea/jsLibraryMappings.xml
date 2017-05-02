@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{angular-cookies, angular-route, ngStorage}" />
+    <file url="PROJECT" libraries="{angular, angular-route, braintree-2.32.0, jquery-1.12.0, jquery-2.1.1, tether}" />
   </component>
 </project>
