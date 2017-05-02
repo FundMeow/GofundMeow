@@ -24,8 +24,9 @@ app.config(function($routeProvider, $locationProvider){
         .when('/sign-up', {
             templateUrl: 'signup.html'
         })
-        .when('/payment', {
-            templateUrl: 'payment.ejs'
+        .when('user/:userId/pet/:petId', {
+            templateUrl: 'payment.html',
+            controller: 'paymentCtr'
         })
         .otherwise({
             redirectTo: '/'
@@ -116,3 +117,18 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 
 }]);
 
+
+
+app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
+    function($scope, $http, $cookieStore, $routeParams) {
+
+            var _id = $routeParams.userId;
+            $scope.funds = 0;
+
+            $http.get('/user/' + _id).then(function(data){
+
+
+
+            });
+
+    }]);
