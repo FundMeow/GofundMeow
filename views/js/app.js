@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute','ngCookies']);
+var app = angular.module('fundMeow', ['ngRoute']);
 
 //Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
@@ -27,9 +27,10 @@ app.config(function($routeProvider, $locationProvider){
         .when('user/:userId/pet_donate/:petId', {
             templateUrl: 'payment.html',
             controller: 'paymentCtrl'
-        }).otherwise({
+        })
+        .otherwise({
             redirectTo: '/'
-    });
+        });
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false
@@ -115,4 +116,94 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
         }
 
 }]);
+
+
+app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
+    function($scope, $http, $cookieStore, $routeParams) {
+        $scope.message = 'Please use the form below to pay:';
+        $scope.showDropinContainer = true;
+        $scope.isError = false;
+        $scope.isPaid = false;
+
+        $scope.getToken = function () {
+
+            $http({
+                method: 'GET',
+                url: '/payment'
+            }).success(function (data) {
+
+                console.log(data.clientToken);
+
+                braintree.setup(data.clientToken, 'dropin', {
+                    container: 'checkout',
+                    // Form is not submitted by default when paymentMethodNonceReceived is implemented
+                    paymentMethodNonceReceived: function (event, nonce) {
+
+                        $scope.message = 'Processing your payment...';
+                        $scope.showDropinContainer = false;
+
+                        $http({
+                            method: 'POST',
+                            url: '/process',
+                            data: {
+                                amount: $scope.amount,
+                                payment_method_nonce: nonce
+                            }
+                        }).success(function (data) {
+
+                            console.log(data.success);
+
+                            if (data.success) {
+                                $scope.message = 'Payment authorized, thanks.';
+                                $scope.showDropinContainer = false;
+                                $scope.isError = false;
+                                $scope.isPaid = true;
+                                var _id = $routeParams.userId;
+                                //updating user
+                                var funds = $scope.amount;
+
+                                $http.get('/user/' + _id).then(function(data) {
+                                    $scope.user=data.data;
+                                    for (var i =0; i < $scope.user.pet.length; i++){
+                                        if($scope.user.pet[i]._id == $routeParams.petId){
+                                            $scope.user.pet[i].funds += funds;
+                                            $http.put('/user/' + _id).then(function (data) {
+                                                
+                                            })
+                                        }
+                                    }
+                                });
+                                // $http.get('/payment').then(function (data) {
+                                //     braintree.setup(data);
+                                // });
+                                // $http.post('/process', data).then(function(data){
+                                //     console.log(data);
+                                //     $scope.success = 'Your payment was successful! Thank you for donating.'
+                                // })
+
+                            } else {
+                                // implement your solution to handle payment failures
+                                $scope.message = 'Payment failed: ' + data.message + ' Please refresh the page and try again.';
+                                $scope.isError = true;
+                            }
+
+                        }).error(function (error) {
+                            $scope.message = 'Error: cannot connect to server. Please make sure your server is running.';
+                            $scope.showDropinContainer = false;
+                            $scope.isError = true;
+                        });
+
+                    }
+                });
+
+            }).error(function (error) {
+                $scope.message = 'Error: cannot connect to server. Please make sure your server is running.';
+                $scope.showDropinContainer = false;
+                $scope.isError = true;
+            });
+
+        };
+
+        $scope.getToken();
+    }]);
 

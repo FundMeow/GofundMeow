@@ -18,6 +18,10 @@
     <orderEntry type="library" name="tether" level="application" />
     <orderEntry type="library" name="angular-route" level="application" />
 =======
+<<<<<<< HEAD
+=======
+>>>>>>> f3b046eb727d9f3ccfae0a00e663231b90ef5d2c
+>>>>>>> 7885f077fe36a0fd4a81df89ff699b6823d9904d
     <orderEntry type="library" name="braintree-2.32.0" level="application" />
 >>>>>>> f3b046eb727d9f3ccfae0a00e663231b90ef5d2c
   </component>
