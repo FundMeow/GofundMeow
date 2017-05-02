@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute','ngCookies','ngMaterial']);
+var app = angular.module('fundMeow', ['ngRoute','ngCookies', 'ngMaterial']);
 
 //Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
@@ -134,10 +134,12 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 
                 console.log(data.client_token);
 
+
                 braintree.setup(data.client_token, 'dropin', {
                     container: 'checkout',
                     // Form is not submitted by default when paymentMethodNonceReceived is implemented
                     paymentMethodNonceReceived: function (event, nonce) {
+                        console.log(event);
 
                         $scope.message = 'Processing your payment...';
                         $scope.showDropinContainer = false;
@@ -152,28 +154,38 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
                         }).success(function (data) {
 
                             console.log(data.success);
+                            console.log($scope.amount);
+                            console.log(nonce);
 
                             if (data.success) {
                                 $scope.message = 'Payment authorized, thanks.';
                                 $scope.showDropinContainer = false;
                                 $scope.isError = false;
                                 $scope.isPaid = true;
-                                // var _id = $routeParams.userId;
-                                // //updating user
-                                // var funds = $scope.amount;
-                                //
-                                // $http.get('/user/' + _id).then(function(data) {
-                                //     $scope.user=data.data;
-                                //     for (var i =0; i < $scope.user.pet.length; i++){
-                                //         if($scope.user.pet[i]._id == $routeParams.petId){
-                                //             $scope.user.pet[i].funds += funds;
-                                //             $http.put('/user/' + _id).then(function (data) {
-                                //
-                                //             })
-                                //         }
-                                //     }
-                                // });
+                                var _id = $routeParams.userId;
+                                //updating user
+                                var funds = $scope.amount;
 
+                                $http.get('/user/' + _id).then(function(data) {
+                                    console.log(data.data);
+                                    $scope.user = data.data;
+                                    for (var i =0; i < $scope.user.user.pet.length; i++){
+                                        console.log($scope.user.user.pet[i]._id);
+                                        console.log($routeParams.petId);
+                                        if($scope.user.user.pet[i]._id == $routeParams.petId){
+                                            $scope.user.user.pet[i].funds += funds;
+                                            $http({
+                                                method: 'PUT',
+                                                url: '/user/'+_id,
+                                                data:{
+                                                    user: $scope.user.user.pet[i].funds
+                                                }
+                                            }).then(function(data){
+                                                console.log(data);
+                                            })
+                                        }
+                                    }
+                                });
                             } else {
                                 // implement your solution to handle payment failures
                                 $scope.message = 'Payment failed: ' + data.message + ' Please refresh the page and try again.';

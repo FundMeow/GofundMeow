@@ -1,0 +1,10 @@
+.paymentContainer{
+
+    max-width: 500px;
+
+}
+.message{
+    font-size: 34px;
+    font-weight: bold;
+    font-family: "Avenir Next", 'Palanquin Dark', sans-serif, serif
+}

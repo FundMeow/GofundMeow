@@ -3,7 +3,7 @@
 
     <md-whiteframe class="md-whiteframe-z1" layout="column" layout-align="center center" ng-class="{error: isError, success: isPaid}">
 
-        <span><p ng-bind="message"></p></span>
+        <span class="message"><p ng-bind="message"></p></span>
 
         <div class="dropin-container" ng-show="showDropinContainer">
 
@@ -23,5 +23,3 @@
     </md-whiteframe>
 
 </md-content>
-
-<script src="https://js.braintreegateway.com/js/braintree-2.32.0.min.js"></script>

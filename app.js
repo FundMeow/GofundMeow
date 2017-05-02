@@ -5,6 +5,7 @@ var express = require('express');
 var path = require('path');
 var app = require('express')();
 var mongoose = require('mongoose');
+var util = require('util');
 
 var jsonErrorFormatter = require('./api/helpers/jsonErrorFormatter');
 module.exports = app; // for testing
@@ -14,6 +15,7 @@ var config = {
 
 var braintree = require('braintree');
 var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json();
 var parseUrlEnconded = bodyParser.urlencoded({
     extended: false
 });
@@ -34,15 +36,14 @@ app.get('/payment', function (request, response) {
     });
 });
 
-app.post('/process', parseUrlEnconded, function (request, response) {
-
+app.post('/process', jsonParser, function (request, response) {
     var transaction = request.body;
-
     gateway.transaction.sale({
         amount: transaction.amount,
         paymentMethodNonce: transaction.payment_method_nonce
     }, function (err, result) {
         if (err) throw err;
+        console.log(util.inspect(result));
         response.json(result);
     });
 });
