@@ -28,7 +28,7 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: 'payment.html',
             controller: 'paymentCtrl'
         }).otherwise({
-            redirect: '/'
+            redirectTo: '/'
     });
     $locationProvider.html5Mode({
         enabled: true,
@@ -113,5 +113,4 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
             }
             return window.btoa(binary);
         }
-
 }]);
