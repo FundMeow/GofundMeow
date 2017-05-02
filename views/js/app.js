@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute','ngCookies']);
+var app = angular.module('fundMeow', ['ngRoute','ngCookies','ngMaterial']);
 
 //Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
@@ -132,9 +132,9 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
                 url: '/payment'
             }).success(function (data) {
 
-                console.log(data.clientToken);
+                console.log(data.client_token);
 
-                braintree.setup(data.clientToken, 'dropin', {
+                braintree.setup(data.client_token, 'dropin', {
                     container: 'checkout',
                     // Form is not submitted by default when paymentMethodNonceReceived is implemented
                     paymentMethodNonceReceived: function (event, nonce) {
@@ -158,28 +158,21 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
                                 $scope.showDropinContainer = false;
                                 $scope.isError = false;
                                 $scope.isPaid = true;
-                                var _id = $routeParams.userId;
-                                //updating user
-                                var funds = $scope.amount;
-
-                                $http.get('/user/' + _id).then(function(data) {
-                                    $scope.user=data.data;
-                                    for (var i =0; i < $scope.user.pet.length; i++){
-                                        if($scope.user.pet[i]._id == $routeParams.petId){
-                                            $scope.user.pet[i].funds += funds;
-                                            $http.put('/user/' + _id).then(function (data) {
-
-                                            })
-                                        }
-                                    }
-                                });
-                                // $http.get('/payment').then(function (data) {
-                                //     braintree.setup(data);
+                                // var _id = $routeParams.userId;
+                                // //updating user
+                                // var funds = $scope.amount;
+                                //
+                                // $http.get('/user/' + _id).then(function(data) {
+                                //     $scope.user=data.data;
+                                //     for (var i =0; i < $scope.user.pet.length; i++){
+                                //         if($scope.user.pet[i]._id == $routeParams.petId){
+                                //             $scope.user.pet[i].funds += funds;
+                                //             $http.put('/user/' + _id).then(function (data) {
+                                //
+                                //             })
+                                //         }
+                                //     }
                                 // });
-                                // $http.post('/process', data).then(function(data){
-                                //     console.log(data);
-                                //     $scope.success = 'Your payment was successful! Thank you for donating.'
-                                // })
 
                             } else {
                                 // implement your solution to handle payment failures

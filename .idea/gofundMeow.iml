@@ -29,5 +29,9 @@
     <orderEntry type="library" name="mongoose-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="ng-file-upload" level="application" />
     <orderEntry type="library" name="ng-file-upload-shim" level="application" />
+    <orderEntry type="library" name="angular-animate" level="application" />
+    <orderEntry type="library" name="angular-aria" level="application" />
+    <orderEntry type="library" name="angular-messages" level="application" />
+    <orderEntry type="library" name="angular-material" level="application" />
   </component>
 </module>

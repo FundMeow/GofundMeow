@@ -26,13 +26,12 @@ var gateway = braintree.connect({
 
 
 app.get('/payment', function (request, response) {
-
     gateway.clientToken.generate({}, function (err, res) {
-        response.render('payment', {
-            clientToken: res.clientToken
+        if (err) throw err;
+        response.json({
+            "client_token": res.clientToken
         });
     });
-
 });
 
 app.post('/process', parseUrlEnconded, function (request, response) {
@@ -43,23 +42,9 @@ app.post('/process', parseUrlEnconded, function (request, response) {
         amount: transaction.amount,
         paymentMethodNonce: transaction.payment_method_nonce
     }, function (err, result) {
-
         if (err) throw err;
-
-        if (result.success) {
-
-            console.log(result);
-
-            response.sendFile('success.html', {
-                root: './views'
-            });
-        } else {
-            response.sendFile('error.html', {
-                root: './views'
-            });
-        }
+        response.json(result);
     });
-
 });
 
 SwaggerExpress.create(config, function(err, swaggerExpress) {
