@@ -22,7 +22,8 @@ app.config(function($routeProvider, $locationProvider){
             controller: 'userCtrl'
         })
         .when('/sign-up', {
-            templateUrl: 'signup.html'
+            templateUrl: 'signup.html',
+            controller: 'signupController'
         })
         .when('/user/:userId/pet_donate/:petId', {
             templateUrl: 'transaction.html',
@@ -219,4 +220,29 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
         };
 
         $scope.getToken();
+    }]);
+
+app.controller('signupCtrl', ['$scope', '$http','$cookieStore','$routeParams',
+    function($scope, $http, $cookieStore, $routeParams) {
+
+    $scope.firstName;
+    $scope.lastName;
+
+
+
+   $scope.user = {
+       firstName: $scope.firstName,
+
+
+
+   }
+
+   $http.post('/users', $scope.user).then(function(data){
+
+       console.log(data);
+
+   })
+
+
+
     }]);
