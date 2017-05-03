@@ -42,6 +42,7 @@
 
 }
 .petInfo{
+
     font-family: "Avenir Next",'Vollkorn','Palanquin Dark',sans-serif,serif;
     font-size: 12px;
 }
@@ -55,7 +56,7 @@
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
     border: 1px solid #3c3c3c;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .btnClass3:hover{
     background-color: #8390a1;
@@ -69,6 +70,7 @@
     width: 200px;
     height: 200px;
     z-index:100;
+    margin-top: 50px;
 }
 @media (max-width: 1000px) and (min-width: 600px){
 
@@ -109,25 +111,26 @@
         visibility: hidden;
     }
     .topNav2{
-        width: 104.2%;
-        height: 40px;
+        width: 104%;
+        height: 80px;
         position: absolute;
-        top: 40px;
+        top: 0;
+        left: 0;
         z-index: -1;
-        visibility: visible;
+        visibility: visible;color: #b8d1bc;
     }
     .image_position{
         width: 100px;
         height: 100px;
     }
     .petName{
-        font-size: 250%;
+        font-size: 200%;
     }
     .btnClass3{
         margin-top: 70px;
         width:75px;
         height: 30px;
-        font-size: 18px;
+        font-size: 12px;
     }
 }
 .tableFlow{
@@ -145,5 +148,26 @@
     background-color: #f5f5f5;
 }
 .text{
-    margin-left: 340px;
+    margin-left: 240px;
+}.infoPosition{
+     margin-right: 200px;
+     margin-left: 200px;
+ }
+.infoContainer{
+    max-width: 500px; max-height: 150px;
+    padding: 10px 10px 10px 10px;
+    overflow:auto
+}
+@media (max-width: 600px) and (min-width: 375px) {
+    .infoPosition{
+        margin-right: 50px;
+        margin-left: 50px;
+        overflow: auto;
+    }
+    .infoContainer{
+    }
+    .tableFlow{
+        margin-right: 20px;
+    }
+
 }
