@@ -223,7 +223,7 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
         $scope.getToken();
     }]);
 
-app.controller('signupCtrl', ['$scope', '$http','$cookieStore','$routeParams',
+app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams',
     function($scope, $http, $cookieStore, $routeParams) {
 
     $scope.firstName;
@@ -237,12 +237,12 @@ app.controller('signupCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 
 
    }
-
-   $http.post('/users', $scope.user).then(function(data){
-
-       console.log(data);
-
-   })
+   //
+   // $http.post('/users', $scope.user).then(function(data){
+   //
+   //     console.log(data);
+   //
+   // })
 
 
 
