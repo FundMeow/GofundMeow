@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html class="no-js" lang="">
+<html class="no-js" lang="" >
 
 <head>
     <meta charset="utf-8">
@@ -36,7 +36,6 @@
 <![endif]-->
 <header>
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -76,11 +75,9 @@
                     <li><a href="/">Home</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
     </nav>
-    <!--</div>-->
 </header>
-<body ng-app="fundMeow" style="background-color: #fbfffe">
+<body ng-app="fundMeow">
 <!--Page views -->
 <div ng-controller="mainCtrl">
 
@@ -88,8 +85,12 @@
 
 </div>
 
-
-
+<div class="navbar navbar-fixed-bottom">
+    <footer class="footer">
+        <span class="text-muted text-center" style="margin-left: 5px;">&copy; FundMeow 2017</span>
+        <span class="text-right text text-success">Joshua Brummet | Taylor Daly | Drew Smegner | Christopher Corona | Vinh Tran</span>
+    </footer>
+</div>
 <!--Brain Tree-->
 <script src="https://js.braintreegateway.com/js/braintree-2.32.0.min.js"></script>
 
@@ -110,25 +111,20 @@
 
 <!--Angular Routes-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<!--Moment.Js-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
 
 <!--Angular Materials-->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>-->
 
 <!-- Angular Material Library -->
 <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
 <!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
 <script src="js/app.js"></script>
+
 </body>
-<div>
-    <div class="navbar navbar-fixed-bottom" style="background-color: #adadad; z-index: 999;">
-        <footer class="footer">
-            <span class="text-muted text-center" style="margin-left: 5px;">&copy; FundMeow 2017</span>
-            <span class="text-right text text-success">Joshua Brummet | Taylor Daly | Drew Smegner | Christopher Corona | Vinh Tran</span>
-        </footer>
-    </div>
-</div>
 
 </html>

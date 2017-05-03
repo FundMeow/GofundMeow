@@ -7,7 +7,7 @@
 }
 .picture_position2{
     position: absolute;
-    left: 25px;
+    left: 18%;
     top: 6px;
     width: 60px;
     height: 60px;
@@ -15,7 +15,7 @@
 
 .title2{
     position:absolute;
-    left: 7%;
+    left: 23%;
     top:0;
     font-size: 300%; z-index: 1;
     font-family:signPainter, "Great Vibes", cursive;
@@ -24,7 +24,7 @@
 .petsTitle{
     position:absolute;
     left: 38%;
-    top:0;
+    top:-64px;
     font-size: 600%; z-index: 1;
     font-family: "Avenir Next",'Vollkorn','Palanquin Dark',sans-serif,serif;
     color: #4A4A4A;
@@ -124,9 +124,8 @@
 }
 .tableFlow{
     overflow: auto;
-    height: 500px;
+    height: 700px;
     margin-top: 50px;
-
 }
 .footer {
     position: absolute;
@@ -137,7 +136,7 @@
     background-color: #f5f5f5;
 }
 .text{
-    margin-left: 240px;
+    margin-left: 300px;
 }.infoPosition{
      margin-right: 200px;
      margin-left: 200px;
@@ -157,6 +156,7 @@
     }
     .tableFlow{
         max-width:500px;
+        margin-left: -6px;
     }
 
 }
