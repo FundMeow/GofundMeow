@@ -1,7 +1,4 @@
 
-.topNav2 {
-    visibility: hidden;
-}
 
 .picture_container2{
     max-width: 100px;
@@ -97,27 +94,19 @@
 
     .petsTitle{
         top: -10px;
-        font-size: 400%;
-        left: 38%;
+        font-size: 250%;
+        left: 41%;
     }
     .picture_container2{
-        max-width: 60px;
-        height: 60px;
+        max-width: 50px;
+        height: 50px;
     }
     .picture_position2{
-        left: 20%;
+        top: 0;
+        left: 2%;
     }
     .title2{
         visibility: hidden;
-    }
-    .topNav2{
-        width: 104%;
-        height: 80px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        visibility: visible;color: #b8d1bc;
     }
     .image_position{
         width: 100px;
@@ -167,7 +156,7 @@
     .infoContainer{
     }
     .tableFlow{
-        margin-right: 20px;
+        max-width:500px;
     }
 
 }

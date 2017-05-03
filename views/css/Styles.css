@@ -5,6 +5,9 @@
 html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
+    body{
+        padding-bottom: 100px;
+    }
 .picture_container{
     max-width: 100px;
     border-radius: 60px;
@@ -65,13 +68,13 @@ html {
 
 @media (max-width: 600px) and (min-width: 0px){
     .picture_container{
-        max-width: 40px;
-        height: 40px;
+        max-width: 50px;
+        height: 50px;
     }
     .picture_position{
         position: absolute;
         left: 2%;
-        top: 6px;
+        top: 0px;
     }
     .title{
         left: 33%;
@@ -84,6 +87,10 @@ html {
         visibility: visible;
         top: 40px;
     }
+    .body{
+        padding-bottom: 100px;
+    }
+
 }
 /************************************************************/
 
@@ -188,10 +195,10 @@ br{
 
 .box{
     position: relative;
-    margin-left: 25%;
+    margin-left: 23%;
     top: -60px;
     max-width: 600px;
-    font-size: 40px;
+    font-size: 24px;
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     color: #181818;
     font-style: italic;
@@ -199,9 +206,10 @@ br{
 @media (max-width: 600px) and (min-width: 0px) {
     .box{
        position: absolute;
-        top: 89%;
+        top: 81%;
         left: 28%;
         max-width: 180px;
+        font-size: 14px;
     }
 }
 
