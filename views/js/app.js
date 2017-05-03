@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute','ngCookies', 'ngMaterial']);
+var app = angular.module('fundMeow', ['ngRoute','ngCookies', 'ngMaterial', /*'ngFileUpload', 'ngImgCrop'*/]);
 
 //Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
@@ -23,7 +23,7 @@ app.config(function($routeProvider, $locationProvider){
         })
         .when('/sign-up', {
             templateUrl: 'signup.html',
-            controller: 'signupController'
+            controller: 'signupCtrl'
         })
         .when('/user/:userId/pet_donate/:petId', {
             templateUrl: 'transaction.html',
@@ -226,24 +226,78 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams',
     function($scope, $http, $cookieStore, $routeParams) {
 
-    $scope.firstName;
-    $scope.lastName;
+        $scope.userName = '';
+        $scope.password = '';
+        $scope.firstName = '';
+        $scope.lastName = '';
+        $scope.age = 0;
+        $scope.location = '';
+        $scope.phone = '';
+        $scope.email = '';
+
+        $scope.user = {
+            userName: $scope.userName,
+            password: $scope.password,
+            firstName: $scope.firstName,
+            lastName: $scope.lastName,
+            age: $scope.age,
+            location: $scope.location,
+            phone: $scope.phone,
+            email: $scope.email
+        };
+        var user = $scope.user;
+        $scope.register = function() {
+            $http({
+                method: 'POST',
+                url: '/users',
+                data: user
+            }).success(function (data) {
+                console.log("success");
+            }).error(function (data) {
+                console.log("error");
+            })
+        }
+
+        // $scope.upload = function (dataUrl, name) {
+        //     Upload.upload({
+        //         url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+        //         data: {
+        //             file: Upload.dataUrltoBlob(dataUrl, name)
+        //         },
+        //     }).then(function (response) {
+        //         $timeout(function () {
+        //             $scope.result = response.data;
+        //         });
+        //     }, function (response) {
+        //         if (response.status > 0) $scope.errorMsg = response.status
+        //             + ': ' + response.data;
+        //     }, function (evt) {
+        //         $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+        //     });
+        // }
 
 
 
-   $scope.user = {
-       firstName: $scope.firstName,
 
-
-
-   }
-   //
-   // $http.post('/users', $scope.user).then(function(data){
-   //
-   //     console.log(data);
-   //
-   // })
-
-
-
-    }]);
+        // $http.post('/users', $scope.user).then(function(data){
+        //     console.log(data);
+        // },
+        //     {
+        //
+        //     })
+        // $http({
+        //     method: 'POST',
+        //     url: '/users',
+        //     data: {user: $scope.user}
+        // }).success(function (data) {
+        //     // this callback will be called asynchronously
+        //     // when the response is available
+        //     console.log(data);
+        //
+        // }).error(function(data) {
+        //     // called asynchronously if an error occurs
+        //     // or server returns response with an error status.
+        //     $scope.message = 'Error: Can not create an account!';
+        //     $scope.isError = true;
+        // });
+}]);
