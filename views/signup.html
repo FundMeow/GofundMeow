@@ -48,33 +48,21 @@
                         <label>Email Address</label>
                         <input type="text" placeholder="Enter Email Address Here.." class="form-control" ng-model="user.email">
                     </div>
-                    <div>Crop Image and Upload</div>
-                    <button ngf-select ng-model="picFile" accept="image/*">
-                        Select Picture</button>
-                    <div ngf-drop ng-model="picFile" ngf-pattern="image/*"
-                         class="cropArea">
-                        <img-crop image="picFile  | ngfDataUrl"
-                                  result-image="croppedDataUrl" ng-init="croppedDataUrl=''">
-                        </img-crop>
-                    </div>
-                    <div>
-                        <img ng-src="{{croppedDataUrl}}" />
-                    </div>
-                        <button ng-click="upload(croppedDataUrl, picFile.name)">Accept Cropped Picture</button>
-                    <span ng-show="result">Upload Successful</span>
-                    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+
                     <div class="control-group">
                         <!-- Button -->
                         <div>
                             <button ng-click="register()">Register</button>
                         </div>
                     </div>
-                    <div class="control-group">
-                        <!-- Button -->
-                        <div>
-                            <button ng-click="test()">test</button>
-                        </div>
-                    </div>
+                    <!--Upload on form submit or button click-->
+                    <form>
+                        <!--Single Image with validations-->
+                        <div class="button" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                             ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100"
+                             ngf-resize="{width: 100, height: 100}">Select photo</div>
+                        <button type="submit" ng-click="upload()">Add photo</button>
+                    </form>
                 </div>
             </form>
         </div>

@@ -39,5 +39,19 @@
     <orderEntry type="library" name="angular-animate" level="application" />
     <orderEntry type="library" name="angular-cookies" level="application" />
     <orderEntry type="library" name="angular-material" level="application" />
+    <orderEntry type="library" name="jquery-1.12.0" level="application" />
+    <orderEntry type="library" name="jquery-2.1.1" level="application" />
+    <orderEntry type="library" name="braintree-2.32.0" level="application" />
+    <orderEntry type="library" name="angular" level="application" />
+    <orderEntry type="library" name="angular-route" level="application" />
+    <orderEntry type="library" name="angular-cookies" level="application" />
+    <orderEntry type="library" name="angular-animate" level="application" />
+    <orderEntry type="library" name="angular-material" level="application" />
+    <orderEntry type="library" name="angular-messages" level="application" />
+    <orderEntry type="library" name="angular-aria" level="application" />
+    <orderEntry type="library" name="tether" level="application" />
+    <orderEntry type="library" name="ng-file-upload" level="application" />
+    <orderEntry type="library" name="ng-file-upload-shim" level="application" />
+    <orderEntry type="library" name="ng-img-crop" level="application" />
   </component>
 </module>

@@ -4,7 +4,7 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute','ngCookies', 'ngMaterial', /*'ngFileUpload', 'ngImgCrop'*/]);
+var app = angular.module('fundMeow', ['ngRoute','ngCookies', 'ngMaterial', 'ngFileUpload', 'ngImgCrop']);
 
 //Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
@@ -223,8 +223,8 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
         $scope.getToken();
     }]);
 
-app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams',
-    function($scope, $http, $cookieStore, $routeParams) {
+app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'Upload', '$timeout',
+    function($scope, $http, $cookieStore, $routeParams, Upload, $timeout) {
 
         $scope.userName = '';
         $scope.password = '';
@@ -234,6 +234,7 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams',
         $scope.location = '';
         $scope.phone = '';
         $scope.email = '';
+        $scope.img = '';
 
         $scope.user = {
             userName: $scope.userName,
@@ -243,8 +244,10 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams',
             age: $scope.age,
             location: $scope.location,
             phone: $scope.phone,
-            email: $scope.email
+            email: $scope.email,
+            img: $scope.img
         };
+
         var user = $scope.user;
         $scope.register = function() {
             $http({
@@ -252,52 +255,51 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams',
                 url: '/users',
                 data: user
             }).success(function (data) {
-                console.log("success");
+                console.log(data.created);
+                $scope.user = data.created;
+
+                $scope.upload = function() {
+                    console.log($scope.file);
+                    var base64data;
+                    var reader = new window.FileReader();
+                    reader.readAsDataURL($scope.file);
+                    reader.onloadend = function() {
+                        base64data = reader.result;
+                        console.log(base64data);
+                    }
+
+                    $http({
+                        method: 'POST',
+                        url: '/user/' + $scope.user._id + '/petpicture',
+                        data: Upload.base64DataUrl(base64data)
+                    })
+                };
+                // $scope.submit = function() {
+                //     if ($scope.form.file.$valid && $scope.file) {
+                //         $scope.upload($scope.file);
+                //     }
+                // };
+
+
+                // $scope.upload = function (dataUrl, name) {
+                //     Upload.upload({
+                //         url: 'http://localhost:8080/user/' + $scope.user._id + '/petpicture',
+                //         data: {
+                //             file: Upload.base64DataUrl(dataUrl, name)
+                //         }
+                //     }).then(function (response) {
+                //         $timeout(function () {
+                //             $scope.result = response.data;
+                //         });
+                //     }, function (response) {
+                //         if (response.status > 0) $scope.errorMsg = response.status
+                //             + ': ' + response.data;
+                //     }, function (evt) {
+                //         $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
+                //     });
+                // };
             }).error(function (data) {
                 console.log("error");
             })
         }
-
-        // $scope.upload = function (dataUrl, name) {
-        //     Upload.upload({
-        //         url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-        //         data: {
-        //             file: Upload.dataUrltoBlob(dataUrl, name)
-        //         },
-        //     }).then(function (response) {
-        //         $timeout(function () {
-        //             $scope.result = response.data;
-        //         });
-        //     }, function (response) {
-        //         if (response.status > 0) $scope.errorMsg = response.status
-        //             + ': ' + response.data;
-        //     }, function (evt) {
-        //         $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-        //     });
-        // }
-
-
-
-
-        // $http.post('/users', $scope.user).then(function(data){
-        //     console.log(data);
-        // },
-        //     {
-        //
-        //     })
-        // $http({
-        //     method: 'POST',
-        //     url: '/users',
-        //     data: {user: $scope.user}
-        // }).success(function (data) {
-        //     // this callback will be called asynchronously
-        //     // when the response is available
-        //     console.log(data);
-        //
-        // }).error(function(data) {
-        //     // called asynchronously if an error occurs
-        //     // or server returns response with an error status.
-        //     $scope.message = 'Error: Can not create an account!';
-        //     $scope.isError = true;
-        // });
-}]);
+    }]);
