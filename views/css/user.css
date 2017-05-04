@@ -148,6 +148,7 @@ body .no-padding {
     position: relative;
     width: 100%;
     border: 2px solid #dedede;
+    margin-bottom: 100px;
 
 }
 .status-upload {

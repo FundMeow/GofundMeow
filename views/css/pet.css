@@ -36,7 +36,6 @@
     font-family: 'Vollkorn',"Avenir Next",'Palanquin Dark',serif;
     font-style: italic;
     max-width: 60px;
-
 }
 .petInfo{
 
@@ -157,6 +156,7 @@
     .tableFlow{
         max-width:500px;
         margin-left: -6px;
+        overflow: hidden;
     }
 
 }
