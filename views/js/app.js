@@ -4,7 +4,8 @@
 
 'use strict';
 
-var app = angular.module('fundMeow', ['ngRoute','ngCookies', 'ngMaterial']);
+var app = angular.module('fundMeow', ['ngRoute','ngCookies', 'ngMaterial', 'ngFileUpload', 'ngImgCrop']);
+
 
 //Configurations for web app routes.
 app.config(function($routeProvider, $locationProvider){
@@ -22,7 +23,8 @@ app.config(function($routeProvider, $locationProvider){
             controller: 'userCtrl'
         })
         .when('/sign-up', {
-            templateUrl: 'signup.html'
+            templateUrl: 'signup.html',
+            controller: 'signupCtrl'
         })
         .when('/user/:userId/pet_donate/:petId', {
             templateUrl: 'transaction.html',
@@ -49,31 +51,31 @@ app.controller('petCtrl', ['$scope', '$http','$routeParams',
     function($scope, $http, $routeParams) {
 
 //Getting User information.
-    $http.get('/users').then(function(data){
+        $http.get('/users').then(function(data){
 
-        $scope.users = data;
-        $scope.pets = [];
-        $scope.imgArray = [];
+            $scope.users = data;
+            $scope.pets = [];
+            $scope.imgArray = [];
 
-        //Assigning new angular objects data from the request.
-        for(var i = 0; i < $scope.users.data.users.length; i++){
-            $scope.img = _arrayBufferToBase64($scope.users.data.users[i].img.data);
-            $scope.imgArray.push($scope.img);
-            $scope.pets.push($scope.users.data.users[i].pet);
-            $scope.pets[i]._id = $scope.users.data.users[i]._id;
-        }
+            //Assigning new angular objects data from the request.
+            for(var i = 0; i < $scope.users.data.users.length; i++){
+                $scope.img = _arrayBufferToBase64($scope.users.data.users[i].img.data);
+                $scope.imgArray.push($scope.img);
+                $scope.pets.push($scope.users.data.users[i].pet);
+                $scope.pets[i]._id = $scope.users.data.users[i]._id;
+            }
 
-        //Assigning each pet a image. Hard coded for time purposes.
-        var j = 0;
-        $scope.pets.forEach(function (newPet) {
-            newPet.img = $scope.imgArray[j];
-            j++;
+            //Assigning each pet a image. Hard coded for time purposes.
+            var j = 0;
+            $scope.pets.forEach(function (newPet) {
+                newPet.img = $scope.imgArray[j];
+                j++;
+            });
+            console.log($scope.pets);
         });
-        console.log($scope.pets);
-    });
 
 //Function to convert buffer to base64
-    function _arrayBufferToBase64(buffer) {
+        function _arrayBufferToBase64(buffer) {
             var binary = '';
             var bytes = new Uint8Array(buffer);
             var len = bytes.byteLength;
@@ -82,13 +84,13 @@ app.controller('petCtrl', ['$scope', '$http','$routeParams',
             }
             return window.btoa(binary);
         }
-}]);
+    }]);
 
 //User profile Controller.
 app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
     function($scope, $http, $cookieStore, $routeParams) {
 
-    //Get user Id and use it to retrieve the user info from the API. with a http request.
+        //Get user Id and use it to retrieve the user info from the API. with a http request.
 
         //gets Id from URL path.
         var __id = $routeParams.userId;
@@ -104,7 +106,7 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
             }
         });
 
-    //Converting image to base64.
+        //Converting image to base64.
         function _arrayBufferToBase64(buffer) {
             var binary = '';
             var bytes = new Uint8Array(buffer);
@@ -114,7 +116,7 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
             }
             return window.btoa(binary);
         }
-}]);
+    }]);
 
 
 app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
@@ -132,7 +134,7 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
                 url: '/payment'
             }).success(function (data) {
 
-                console.log(data.client_token);
+                //console.log(data.client_token);
 
                 braintree.setup(data.client_token, 'dropin', {
                     container: 'checkout',
@@ -219,4 +221,75 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
         };
 
         $scope.getToken();
+    }]);
+
+app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'Upload', '$timeout',
+    function($scope, $http, $cookieStore, $routeParams, Upload, $timeout) {
+
+        $scope.userName = '';
+        $scope.password = '';
+        $scope.firstName = '';
+        $scope.lastName = '';
+        $scope.age = 0;
+        $scope.location = '';
+        $scope.phone = '';
+        $scope.email = '';
+        $scope.img = '';
+        $scope.animal = '';
+        $scope.name = '';
+        $scope.petAge = 0;
+        $scope.info = '';
+        $scope.pet = {
+            animal: $scope.animal,
+            name: $scope.name,
+            age: $scope.petAge,
+            info: $scope.info,
+            funds: 0
+        }
+        $scope.user = {
+            userName: $scope.userName,
+            passWord: $scope.passWord,
+            firstName: $scope.firstName,
+            lastName: $scope.lastName,
+            age: $scope.age,
+            location: $scope.location,
+            phoneNumber: $scope.phoneNumber,
+            email: $scope.email,
+            pet:[$scope.pet]
+        };
+
+        var user = $scope.user;
+        $scope.register = function() {
+            $http({
+                method: 'POST',
+                url: '/users',
+                data: $scope.user
+            }).success(function (data) {
+                $scope.user = data.created;
+                console.log('user create success');
+
+                $scope.submit = function() {
+                    console.log($scope.file);
+
+                    $scope.upload($scope.file);
+                };
+
+                $scope.upload = function (file) {
+                    Upload.upload({
+                        url: 'http://localhost:8080/user/' + $scope.user._id,
+                        data: {file: file}
+                    }).then(function (resp) {
+                        console.log(resp);
+                        console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
+                    }, function (resp) {
+                        console.log('Error status: ' + resp.status);
+                    }, function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    });
+                };
+            }).error(function (data) {
+                console.log("error");
+            })
+        }
     }]);
