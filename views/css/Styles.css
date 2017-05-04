@@ -225,3 +225,13 @@ br{
     .submit-button {
         margin-top: 10px;
     }
+.signMargin{
+
+    margin-bottom: 150px;
+}
+    @media (max-width: 600px) and (min-width: 0px) {
+        .signMargin{
+
+            margin-bottom: 200px;
+        }
+    }
