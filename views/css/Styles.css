@@ -231,7 +231,6 @@ br{
 }
     @media (max-width: 600px) and (min-width: 0px) {
         .signMargin{
-
-            margin-bottom: 200px;
+            margin-bottom: 300px;
         }
     }
