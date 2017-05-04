@@ -72,8 +72,9 @@
                     <div class="control-group">
                         <!-- Button -->
                         <div>
-                            <button class="btn btn-info" style="margin-bottom: 20px;"
+                            <button name="submit" class="btn btn-info" style="margin-bottom: 20px;"
                                     ng-disabled="!myForm.$valid" ng-click="register()">Register</button>
+                            <span ng-show="isVisible">You are now registered!</span>
                         </div>
                     </div>
                     <!--Upload on form submit or button click-->

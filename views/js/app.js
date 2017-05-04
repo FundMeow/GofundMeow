@@ -14,7 +14,7 @@ app.config(function($routeProvider, $locationProvider){
         .when('/',{
             templateUrl: 'home.html'
         })
-        .when('/pets', {
+        .when('/pets/', {
             templateUrl: 'pets.html',
             controller: 'petCtrl'
         })
@@ -223,8 +223,8 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
         $scope.getToken();
     }]);
 
-app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'Upload', '$timeout',
-    function($scope, $http, $cookieStore, $routeParams, Upload, $timeout) {
+app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'Upload', '$timeout','$location',
+    function($scope, $http, $cookieStore, $routeParams, Upload, $timeout, $location) {
 
         $scope.userName = '';
         $scope.password = '';
@@ -269,8 +269,9 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
                 console.log('user create success');
 
                 $scope.submit = function() {
-                    console.log($scope.file);
 
+                    $scope.isVisible = true;
+                    console.log($scope.file);
                     $scope.upload($scope.file);
                 };
 
