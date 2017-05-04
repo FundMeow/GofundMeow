@@ -238,12 +238,12 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
 
         $scope.user = {
             userName: $scope.userName,
-            password: $scope.password,
+            passWord: $scope.passWord,
             firstName: $scope.firstName,
             lastName: $scope.lastName,
             age: $scope.age,
             location: $scope.location,
-            phone: $scope.phone,
+            phoneNumber: $scope.phoneNumber,
             email: $scope.email,
             img: $scope.img
         };
@@ -253,24 +253,33 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
             $http({
                 method: 'POST',
                 url: '/users',
-                data: user
+                data: $scope.user
             }).success(function (data) {
-                console.log(data.created);
                 $scope.user = data.created;
 
                 $scope.upload = function() {
                     console.log($scope.file);
                     var arrayBuffer;
+
                     var fileReader = new FileReader();
                     fileReader.onload = function () {
                         arrayBuffer = this.result;
                     };
                     fileReader.readAsArrayBuffer($scope.file);
 
+                    var formData= {
+                        data: arrayBuffer,
+                        mimetype: $scope.file.type
+                    }
+                    console.log(formData);
                     $http({
                         method: 'POST',
-                        url: '/user/' + $scope.user._id + '/petpicture',
-                        data: $scope.file
+                        url: '/user/' + $scope.user._id,
+                        data: formData
+                    }).success(function (data) {
+                        console.log('success')
+                    }).error(function (data) {
+                        console.log(data)
                     })
                 };
                 // $scope.submit = function() {
