@@ -1,6 +1,6 @@
 <!doctype html>
 
-<html class="no-js" lang="">
+<html class="no-js" lang="" >
 
 <head>
     <meta charset="utf-8">
@@ -11,6 +11,13 @@
     <base href="/" />
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!--BootStrap CSS -->
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap-overide.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <!--Native CSS-->
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/Styles.css">
@@ -23,6 +30,7 @@
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ng-img-crop/0.3.2/ng-img-crop.css">
 
+    <!--Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Vollkorn:400i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Palanquin+Dark" rel="stylesheet">
@@ -34,7 +42,6 @@
 <![endif]-->
 <header>
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -74,11 +81,9 @@
                     <li><a href="/">Home</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
     </nav>
-    <!--</div>-->
 </header>
-<body ng-app="fundMeow" style="background-color: #e3e7e6">
+<body ng-app="fundMeow">
 <!--Page views -->
 <div ng-controller="mainCtrl">
 
@@ -86,8 +91,12 @@
 
 </div>
 
-
-
+<div class="navbar navbar-fixed-bottom">
+    <footer class="footer">
+        <span class="text-muted text-center" style="margin-left: 5px;">&copy; FundMeow 2017</span>
+        <span class="text-right text text-success">Joshua Brummet | Taylor Daly | Drew Smegner | Christopher Corona | Vinh Tran</span>
+    </footer>
+</div>
 <!--Brain Tree-->
 <script src="https://js.braintreegateway.com/js/braintree-2.32.0.min.js"></script>
 
@@ -102,8 +111,16 @@
 
 <!--Angular-->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+
+<!--Angular Cookies-->
 <script src="https://code.angularjs.org/1.5.5/angular-cookies.js"></script>
+
+<!--Angular Routes-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+<!--Moment.Js-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+
+<!--Angular Materials-->
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
@@ -111,6 +128,7 @@
 
 <!-- Angular Material Library -->
 <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+<!-- shim is needed to support non-HTML5 FormData browsers (IE8-9)-->
 <script src="js/app.js"></script>
 
 <!-- File Upload -->
@@ -119,11 +137,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-img-crop/0.3.2/ng-img-crop.js"></script>
 
 </body>
-<div class="navbar navbar-fixed-bottom" style="background-color: #adadad; z-index: 999">
-    <footer class="footer">
-        <span class="text-muted text-center" style="margin-left: 5px;">&copy; FundMeow 2017</span>
-        <span class="text-right text text-success">Joshua Brummet | Taylor Daly | Drew Smegnerd | Christopher Corona | Vinh Tran</span>
-    </footer>
-</div>
 
 </html>

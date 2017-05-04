@@ -7,8 +7,8 @@
 .profile_image_position{
     left: 2%;
     top: 30%;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     z-index:100;
 }
 .userName{
@@ -20,27 +20,27 @@
     text-overflow: ellipsis;
 }
 .userPetTitle{
-    position: absolute;
-    left: 65%;
-    top: 25%;
+    /*position: absolute;*/
+    /*left: 65%;*/
+    /*top: 20%;*/
     font-size: 84px;
     font-family: "Minion Pro",'Palanquin Dark', sans-serif, serif;
     font-weight: bolder;
+    font-style: italic;
+    text-decoration: underline;
 }
 .rowPosition{
     position: absolute;
     left: 5%;
-    top: 18%;
-
+    top: 12%;
+    padding-bottom: 100px;
 }
 .detailsPosition{
-
-    position: absolute;
-    left: 4%;
-    top: 35%;
-    width: 500px;
+    max-width: 300px;
 
 }
+
+/*}*/
 .userDetails{
     font-family: 'Arial','Palanquin Dark', sans-serif, serif;
     font-size: 24px;
@@ -61,17 +61,17 @@
     font-size: 18px;
     /*margin-right: 50px;*/
 }
-.userContainer{
-    position: absolute;
-    left: 50%;
-    top: 38%;
-    height: 200px;
-    width: 600px;
-    overflow: auto;
-    box-shadow: 1px 2px 2px 3px #72676c;
-    background-color: white;
-    /*border-top: 2px solid black;*/
-}
+/*.userContainer{*/
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*top: 36%;*/
+    /*height: 300px;*/
+    /*!*width: 600px;*!*/
+    /*overflow: auto;*/
+    /*background-color: white;*/
+    /*border-radius: 10px;*/
+    /*!*border-top: 2px solid black;*!*/
+/*}*/
 
 .btnClass4{
     width: 150px;
@@ -82,4 +82,173 @@
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
     border: 1px solid #3c3c3c;
+}
+@media (max-width: 600px) and (min-width: 0px) {
+   .userName{
+       font-size: 24px;
+   }
+    .rowPosition{
+        position: relative;
+
+    }
+   .detailsPosition{
+
+       width: 300px;
+       margin-left: 20px;
+   }
+   .userContainer{
+       margin-top: 50px;
+       width: 300px;
+       top: 75%;
+       left: 16.9%;
+       margin-bottom: 100px;
+   }
+   .userInfo{
+       font-size: 12px;
+   }
+   .btnClass4{
+       width: 100px;
+       height: 35px;
+       font-size: 12px;
+   }
+   .userPetTitle{
+       left: 36%;
+       top: 70%;
+       font-size: 64px;
+   }
+
+}body{ background: #fafafa;}
+.widget-area.blank {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -ms-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+}
+body .no-padding {
+    padding: 0;
+}
+.widget-area {
+    background-color: #fff;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -ms-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    -o-box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.05);
+    float: left;
+    margin-top: -40%;
+    margin-left: 53%;
+    padding: 25px 30px;
+    position: relative;
+    width: 100%;
+    border: 2px solid #dedede;
+    margin-bottom: 100px;
+
+}
+.status-upload {
+    background: none repeat scroll 0 0 #f5f5f5;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    float: left;
+    width: 100%;
+}
+.status-upload form {
+    float: left;
+    width: 100%;
+}
+.status-upload form textarea {
+    background: none repeat scroll 0 0 #fff;
+    border: medium none;
+    -webkit-border-radius: 4px 4px 0 0;
+    -moz-border-radius: 4px 4px 0 0;
+    -ms-border-radius: 4px 4px 0 0;
+    -o-border-radius: 4px 4px 0 0;
+    border-radius: 4px 4px 0 0;
+    color: #777777;
+    float: left;
+    font-family: Lato;
+    font-size: 14px;
+    height: 123px;
+    letter-spacing: 0.3px;
+    padding: 20px;
+    width: 100%;
+    resize:vertical;
+    outline:none;
+    border: 1px solid #F2F2F2;
+}
+
+.status-upload ul {
+    float: left;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0 0 0 15px;
+    width: auto;
+}
+.status-upload ul > li {
+    float: left;
+}
+.status-upload ul > li > a {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    color: #777777;
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px 0 10px 10px;
+    text-align: center;
+    -webkit-transition: all 0.4s ease 0s;
+    -moz-transition: all 0.4s ease 0s;
+    -ms-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+    width: 30px;
+    cursor: pointer;
+}
+.status-upload ul > li > a:hover {
+    background: none repeat scroll 0 0 #606060;
+    color: #fff;
+}
+.status-upload form button {
+    border: medium none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    color: #fff;
+    float: right;
+    font-family: Lato;
+    font-size: 14px;
+    letter-spacing: 0.3px;
+    margin-right: 9px;
+    margin-top: 9px;
+    padding: 6px 15px;
+}
+.dropdown > a > span.green:before {
+    border-left-color: #2dcb73;
+}
+.status-upload form button > i {
+    margin-right: 7px;
+}
+@media (max-width: 600px) and (min-width: 0px) {
+    .widget-area{
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 100px;
+    }
+
+
 }

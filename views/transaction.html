@@ -1,25 +1,27 @@
+<div class="row topNav" style="background-color: #b8d1bc">
+</div>
+<img src="content/CatVector.jpg" class="img-fluid picture_container picture_position" alt="Responsive image">
 
-<md-content class="md-padding">
+<h1 class="title">FundMeow</h1>
+<md-content class="md-padding paymentContainer">
+        <md-whiteframe class="md-whiteframe-z1" layout="column" layout-align="center center" ng-class="{error: isError, success: isPaid}">
 
-    <md-whiteframe class="md-whiteframe-z1" layout="column" layout-align="center center" ng-class="{error: isError, success: isPaid}">
+            <span class="message"><p ng-bind="message"></p></span>
 
-        <span class="message"><p ng-bind="message"></p></span>
+            <div class="dropin-container" ng-show="showDropinContainer">
 
-        <div class="dropin-container" ng-show="showDropinContainer">
+                <form name="payment">
+                    <md-input-container>
+                        <label>Amount (XX.XX)</label>
+                        <input type="number" ng-model="amount"/>
+                    </md-input-container>
 
-            <form name="payment">
-                <md-input-container>
-                    <label>Amount (XX.XX)</label>
-                    <input type="number" ng-model="amount"/>
-                </md-input-container>
+                    <!-- Add Dropin here -->
+                    <div id="checkout"></div>
 
-                <!-- Add Dropin here -->
-                <div id="checkout"></div>
-
-                <md-button class="md-raised md-primary" type="submit">Pay Now</md-button>
-            </form>
-        </div>
-
-    </md-whiteframe>
-
+                    <md-button class="md-raised md-primary" type="submit">Pay Now</md-button>
+                </form>
+            </div>
+        </md-whiteframe>
 </md-content>
+

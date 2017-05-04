@@ -1,7 +1,4 @@
 
-.topNav2 {
-    visibility: hidden;
-}
 
 .picture_container2{
     max-width: 100px;
@@ -10,7 +7,7 @@
 }
 .picture_position2{
     position: absolute;
-    left: 25px;
+    left: 18%;
     top: 6px;
     width: 60px;
     height: 60px;
@@ -18,7 +15,7 @@
 
 .title2{
     position:absolute;
-    left: 7%;
+    left: 23%;
     top:0;
     font-size: 300%; z-index: 1;
     font-family:signPainter, "Great Vibes", cursive;
@@ -27,7 +24,7 @@
 .petsTitle{
     position:absolute;
     left: 38%;
-    top:0;
+    top:-64px;
     font-size: 600%; z-index: 1;
     font-family: "Avenir Next",'Vollkorn','Palanquin Dark',sans-serif,serif;
     color: #4A4A4A;
@@ -39,11 +36,11 @@
     font-family: 'Vollkorn',"Avenir Next",'Palanquin Dark',serif;
     font-style: italic;
     max-width: 60px;
-
 }
 .petInfo{
 
     font-family: "Avenir Next",'Vollkorn','Palanquin Dark',sans-serif,serif;
+    font-size: 12px;
 }
 /*** Buttons ***/
 .btnClass3{
@@ -55,7 +52,7 @@
     font-family: "Avenir Next",'Palanquin Dark',sans-serif, serif;
     background-color: #C9D8E9;
     border: 1px solid #3c3c3c;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 .btnClass3:hover{
     background-color: #8390a1;
@@ -69,6 +66,7 @@
     width: 200px;
     height: 200px;
     z-index:100;
+    margin-top: 50px;
 }
 @media (max-width: 1000px) and (min-width: 600px){
 
@@ -95,46 +93,38 @@
 
     .petsTitle{
         top: -10px;
-        font-size: 400%;
-        left: 38%;
+        font-size: 250%;
+        left: 41%;
     }
     .picture_container2{
-        max-width: 60px;
-        height: 60px;
+        max-width: 50px;
+        height: 50px;
     }
     .picture_position2{
-        left: 20%;
+        top: 0;
+        left: 2%;
     }
     .title2{
         visibility: hidden;
-    }
-    .topNav2{
-        width: 104.2%;
-        height: 40px;
-        position: absolute;
-        top: 40px;
-        z-index: -1;
-        visibility: visible;
     }
     .image_position{
         width: 100px;
         height: 100px;
     }
     .petName{
-        font-size: 250%;
+        font-size: 200%;
     }
     .btnClass3{
         margin-top: 70px;
         width:75px;
         height: 30px;
-        font-size: 18px;
+        font-size: 12px;
     }
 }
 .tableFlow{
     overflow: auto;
-    height: 500px;
+    height: 700px;
     margin-top: 50px;
-
 }
 .footer {
     position: absolute;
@@ -145,5 +135,28 @@
     background-color: #f5f5f5;
 }
 .text{
-    margin-left: 340px;
+    margin-left: 300px;
+}.infoPosition{
+     margin-right: 200px;
+     margin-left: 200px;
+ }
+.infoContainer{
+    max-width: 500px; max-height: 150px;
+    padding: 10px 10px 10px 10px;
+    overflow:auto
+}
+@media (max-width: 600px) and (min-width: 375px) {
+    .infoPosition{
+        margin-right: 50px;
+        margin-left: 50px;
+        overflow: auto;
+    }
+    .infoContainer{
+    }
+    .tableFlow{
+        max-width:500px;
+        margin-left: -6px;
+        overflow: hidden;
+    }
+
 }

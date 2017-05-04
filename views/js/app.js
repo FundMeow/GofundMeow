@@ -120,7 +120,7 @@ app.controller('userCtrl', ['$scope', '$http','$cookieStore','$routeParams',
 
 app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
     function($scope, $http, $cookieStore, $routeParams) {
-    console.log($routeParams.petId);
+
         $scope.message = 'Please use the form below to pay:';
         $scope.showDropinContainer = true;
         $scope.isError = false;
@@ -134,7 +134,6 @@ app.controller('paymentCtrl', ['$scope', '$http','$cookieStore','$routeParams',
             }).success(function (data) {
 
                 console.log(data.client_token);
-
 
                 braintree.setup(data.client_token, 'dropin', {
                     container: 'checkout',
