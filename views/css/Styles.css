@@ -210,11 +210,12 @@ br{
 @media (max-width: 600px) and (min-width: 0px) {
     .box{
        position: absolute;
-        top: 95%;
+        top: 100%;
         left: 0%;
         max-width: 400px;
         font-size: 14px;
         margin-right: 80px;
+        visibility: hidden;
     }
     .margin{
         margin-bottom: 80px;
