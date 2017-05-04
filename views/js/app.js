@@ -260,18 +260,17 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
 
                 $scope.upload = function() {
                     console.log($scope.file);
-                    var base64data;
-                    var reader = new window.FileReader();
-                    reader.readAsDataURL($scope.file);
-                    reader.onloadend = function() {
-                        base64data = reader.result;
-                        console.log(base64data);
-                    }
+                    var arrayBuffer;
+                    var fileReader = new FileReader();
+                    fileReader.onload = function () {
+                        arrayBuffer = this.result;
+                    };
+                    fileReader.readAsArrayBuffer($scope.file);
 
                     $http({
                         method: 'POST',
                         url: '/user/' + $scope.user._id + '/petpicture',
-                        data: Upload.base64DataUrl(base64data)
+                        data: $scope.file
                     })
                 };
                 // $scope.submit = function() {
