@@ -267,6 +267,10 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
                     };
                     fileReader.readAsArrayBuffer($scope.file);
 
+                    var formData = new FormData();
+                    formData.append('data', arrayBuffer);
+                    formData.append('type', $scope.file.type);
+
                     $http({
                         method: 'POST',
                         url: '/user/' + $scope.user._id + '/petpicture',
