@@ -89,7 +89,7 @@
         visibility: hidden;
     }
 }
-@media (max-width: 600px) and (min-width: 375px){
+@media (max-width: 600px) and (min-width: 0){
 
     .petsTitle{
         top: -10px;
@@ -145,7 +145,7 @@
     padding: 10px 10px 10px 10px;
     overflow:auto
 }
-@media (max-width: 600px) and (min-width: 375px) {
+@media (max-width: 600px) and (min-width: 0) {
     .infoPosition{
         margin-right: 50px;
         margin-left: 50px;
