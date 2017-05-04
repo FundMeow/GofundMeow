@@ -28,6 +28,7 @@ function index(req,res){
         return _.isNull(value) || _.isUndefined(value);
 
     }), function (err, users) {
+        console.log(users);
         if(err){
             res.status(500).json(err).end();
         }
@@ -43,6 +44,7 @@ function create(req,res){
     var _user = new User(req.swagger.params.user.value);
     _user.metadata.path = "/user/" + _user._id;
     _user.img = '';
+
     //res.json(_user);
     _user.save(function(err) {
         if (err){
@@ -106,7 +108,6 @@ function destroy(req,res){
 }
 
 function postImage(req,res){
-
     var supported_mimes = [
         'image/png',
         'image/jpeg',
@@ -129,9 +130,12 @@ function postImage(req,res){
         'type': file.mimetype,
         'encoding': file.encoding
     };
+console.log(file);
+    // var _file = file.Binary;
+    // console.log(_file);
     console.log(data);
     var path = 'uploads/';
-    var _id = random.integer(1, 100000000000);
+    //var _id = random.integer(1, 100000000000);
     fs.writeFile(path + file.originalname, file.buffer , function (err) {
         if (err) {
             return res.json({message: 'File not uploaded'});
@@ -144,7 +148,9 @@ function postImage(req,res){
                 }
                 else
                     user.img = img;
-                    console.log(user);
+                    console.log(user.img);
+                    //console.log(img);
+                    //console.log(user);
                     user.save(function(err){
                         if(err){
                         res.status(500).json(err).end();

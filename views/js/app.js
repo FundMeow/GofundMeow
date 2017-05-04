@@ -244,8 +244,8 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
             age: $scope.age,
             location: $scope.location,
             phoneNumber: $scope.phoneNumber,
-            email: $scope.email,
-            img: $scope.img
+            email: $scope.email
+            //img: $scope.img
         };
 
         var user = $scope.user;
@@ -256,61 +256,29 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
                 data: $scope.user
             }).success(function (data) {
                 $scope.user = data.created;
+                console.log('user create success');
 
-                $scope.upload = function() {
+                $scope.submit = function() {
                     console.log($scope.file);
-                    var arrayBuffer;
 
-                    var fileReader = new FileReader();
-                    fileReader.onload = function () {
-                        arrayBuffer = this.result;
-                    };
-                    fileReader.readAsArrayBuffer($scope.file);
-
-                    var formData = new FormData();
-                    formData.append('buffer', arrayBuffer);
-                    formData.append('type', $scope.file.type);
-
-                    // var formData= {
-                    //     data: arrayBuffer,
-                    //     mimetype: $scope.file.type
-                    // }
-                    // console.log(formData);
-
-                    $http({
-                        method: 'POST',
-                        url: '/user/' + $scope.user._id,
-                        data: formData
-                    }).success(function (data) {
-                        console.log('success')
-                    }).error(function (data) {
-                        console.log(data)
-                    })
+                    $scope.upload($scope.file);
                 };
-                // $scope.submit = function() {
-                //     if ($scope.form.file.$valid && $scope.file) {
-                //         $scope.upload($scope.file);
-                //     }
-                // };
 
-
-                // $scope.upload = function (dataUrl, name) {
-                //     Upload.upload({
-                //         url: 'http://localhost:8080/user/' + $scope.user._id + '/petpicture',
-                //         data: {
-                //             file: Upload.base64DataUrl(dataUrl, name)
-                //         }
-                //     }).then(function (response) {
-                //         $timeout(function () {
-                //             $scope.result = response.data;
-                //         });
-                //     }, function (response) {
-                //         if (response.status > 0) $scope.errorMsg = response.status
-                //             + ': ' + response.data;
-                //     }, function (evt) {
-                //         $scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-                //     });
-                // };
+                $scope.upload = function (file) {
+                    Upload.upload({
+                        url: 'http://localhost:8080/user/' + $scope.user._id,
+                        //       data:
+                        data: {file: file}
+                    }).then(function (resp) {
+                        console.log(resp);
+                        console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
+                    }, function (resp) {
+                        console.log('Error status: ' + resp.status);
+                    }, function (evt) {
+                        var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
+                        console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
+                    });
+                };
             }).error(function (data) {
                 console.log("error");
             })
