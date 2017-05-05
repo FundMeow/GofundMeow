@@ -277,7 +277,7 @@ app.controller('signupCtrl', ['$scope','$http','$cookieStore','$routeParams', 'U
 
                 $scope.upload = function (file) {
                     Upload.upload({
-                        url: 'http://localhost:8080/user/' + $scope.user._id,
+                        url: '/user/' + $scope.user._id,
                         data: {file: file}
                     }).then(function (resp) {
                         console.log(resp);
