@@ -8,6 +8,12 @@ html {
 html, body {
         height: 110%;
 }
+
+@media (max-width: 600px) and (min-width: 0px) {
+    body{
+        height: 150%;
+    }
+}
 body {
         background: #bed3d6;
 }
@@ -224,13 +230,4 @@ br{
 
     .submit-button {
         margin-top: 10px;
-    }
-.signMargin{
-
-    margin-bottom: 150px;
-}
-    @media (max-width: 600px) and (min-width: 0px) {
-        .signMargin{
-            margin-bottom: 300px;
-        }
     }
